@@ -807,7 +807,7 @@ This project is maintained in my free time. Your support helps cover development
 - Sharing with friends and colleagues
 - Reporting issues or suggesting features
 - Supporting development financially
-- 👉 [Share your feedback!](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/discussions/17)
+- 👉 [Share your feedback!](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/discussions)
 
 ---
 <div align="center">
