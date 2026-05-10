@@ -6,7 +6,7 @@
 
 <a href="https://www.firstever.tech">
   <img width="600" alt="" title="FirstEver.tech"
-       src="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/blob/main/assets/FirstEverTech-animation.gif" />
+       src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Chipset.png?raw=true" />
 </a>
 
 ## 🔧 Automate Your Intel Chipset Updates
@@ -792,6 +792,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - 🔧 **GitHub**: [FirstEverTech](https://github.com/FirstEverTech)
 - 📧 **Contact**: [Contact Form](https://www.firstever.tech/contact)
 
+<img width="600" alt="Author Photo" title="Marcin Grygiel aka FirstEver and AI" src="https://github.com/user-attachments/assets/452c8553-5059-47c6-9ff9-d73443bb6c06" />
 
 [↑ Back to top](#top)
 
@@ -810,9 +811,11 @@ This project is maintained in my free time. Your support helps cover development
 - 👉 [Share your feedback!](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/discussions)
 
 ---
-<div align="center">
-<img width="480" alt="Author Photo" title="Marcin Grygiel aka FirstEver and AI" src="https://github.com/user-attachments/assets/452c8553-5059-47c6-9ff9-d73443bb6c06" />
-</div>
+
+<a href="https://www.firstever.tech">
+  <img width="600" alt="" title="FirstEver.tech"
+       src="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/blob/main/assets/FirstEverTech-animation.gif" />
+</a>
 
 ---
 
