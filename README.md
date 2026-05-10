@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/License-MIT-0056b3?style=flat-square)](LICENSE)[![PS Gallery Version](https://img.shields.io/powershellgallery/v/universal-intel-chipset-device-updater?style=flat-square&label=PowerShell+Gallery)](https://www.powershellgallery.com/packages/universal-intel-chipset-device-updater)[![AI_Audits](https://img.shields.io/badge/AI_Audits_Score-9.6%2F10-0a8f08?style=flat-square)](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/blob/main/AI_AUDITS.md)[![VirusTotal](https://img.shields.io/badge/VirusTotal-0%2F95-008631?style=flat-square)](https://www.virustotal.com/gui/url/5f60c2ef62608a91bce2fbb0e089a2440045192b17dcda51fbfec7d79e2d59e6?nocache=1)[![Issues](https://img.shields.io/github/issues/FirstEverTech/Universal-Intel-Chipset-Updater?style=flat-square&label=Issues)](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/issues)
 
 <a href="https://www.firstever.tech">
-  <img width="600" alt="" title="FirstEver.tech"
+  <img width="600" alt="" title="Universal Intel Chipset Device Updater"
        src="https://github.com/FirstEverTech/FirstEverTech/blob/main/Images/Intel_Chipset.png?raw=true" />
 </a>
 
