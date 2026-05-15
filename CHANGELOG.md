@@ -6,6 +6,43 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ---
 
+## [v2026.05.0014] - 2026-05-15
+
+### Highlights
+- **Intel Platform Scanner 7.1** – major database generation improvements:
+  - Fixed ArrowLake generation (`15th Gen Core/Core Ultra 200` instead of `14th Gen`)
+  - Added missing generic platform entries (`ArrowLake`, `RaptorLake`, `AlderLake`, `TigerLake`, `CometLake`, `IceLake`, `Lakefield`, `CoffeeLake`, `KabyLake`, `Skylake`, `Crystalwell`) with correct `Order` values
+  - Reordered `PCH Family` (oldest-to-newest) and fixed sorting for `LynxPoint`, `PantherPoint`, `CougarPoint`, `Wellsburg`, `Patsburg`, `Lewisburg`, `Emmitsburg`
+  - Moved `MeteorLake PCH-N/H/S` from `CLIENT - Core` to `PCH Family`
+  - Moved six `*_Extension-Dmasec` entries to `PCH Family` with proper generation names
+  - Moved `IceLakeX` from `XEON / SERVER` to `WORKSTATION / HEDT`
+  - Added asterisk `*` to legend for platforms without dedicated INF (e.g., `Emerald Rapids`, `Ice Lake-SP`, `Cascade Lake-X`) with explanatory footer note
+  - Fixed duplicate `- Desktop/Mobile` suffix in `Generation` field
+  - Added notes in MD footer about Wildcat Lake (shares HWIDs with Panther Lake), Panther Lake H/U (merged into single INF), and 16th generation (Lunar Lake classified under `ATOM / LOW POWER`)
+
+- **Universal Intel Chipset Device Updater – Display Improvements**:
+  - **Grouped HWID display** – platforms shown with HWID list instead of one line per device
+  - **Compact platform information** – each platform uses 3 lines (platform name, generation, installer version, status) – removed redundant `Generation:` label to prevent line wrapping
+  - **Parsing hint** – `Parsing INF information - it may take up to 30 seconds!`
+  - **Simplified header banner** – removed redundant separator and `Visit:` row; author line now includes GitHub link
+  - **Better Windows Inbox handling** – inbox platforms shown in compact grouped list, not mixed with regular updates
+  - **Removed extra blank lines** – no double empty lines before platform information section
+
+### Improvements
+- **Scanner performance**: better sorting and chronological order in all sections (Client, Workstation, Xeon, Atom, PCH Family)
+- **Updater UI**: cleaner, more readable output in `[SCREEN 2/4]` without information loss
+
+### Technical
+- Updated `Intel-Platform-Scanner.ps1` to v7.1
+- Updated `universal-intel-chipset-device-updater.ps1` to v2026.05.0014
+- Updated `README.md` platform support table up to 17th Gen
+- Updated `CHANGELOG.md` for this release
+
+### Notes
+- No changes to core detection/installation logic – the INF update process, Windows Inbox detection, and safety measures remain identical to previous versions
+
+---
+
 ## [v2026.03.0013] - 2026-03-13
 
 ### Improvements
@@ -200,6 +237,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 # Release Links
 
+[v2026.05.0014]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.05.0014
 [v2026.03.0013]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0013  
 [v2026.03.0012]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0012  
 [v2026.03.0011]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0011  
