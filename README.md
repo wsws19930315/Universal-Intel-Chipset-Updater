@@ -650,14 +650,23 @@ The PowerShell script itself scores **0/56** on VirusTotal. You can verify both 
 <a id="intel-platform-support"></a>
 ## 💻 **16. Intel Platform Support**
 
-| Generation | Code Name | Status | Notes |
-|------------|-----------|--------|-------|
-| 12th-14th Gen | Alder/Raptor Lake | ✅ Full | Latest support |
-| 10th-11th Gen | Comet/Tiger Lake | ✅ Full | Complete support |
-| 8th-9th Gen | Coffee/Whiskey Lake | ✅ Full | Stable support |
-| 6th-7th Gen | Skylake/Kaby Lake | ✅ Full | Mature support |
-| 4th-5th Gen | Haswell/Broadwell | ✅ Full | Legacy support |
-| 2nd-3rd Gen | Sandy/Ivy Bridge | ✅ Full | Extended support |
+| Generation / Series | Code Name | Status | Notes |
+|---------------------|-----------|--------|-------|
+| 17th Gen Core / Core Ultra 300 | Panther Lake (Mobile) | ✅ Full | H & U variants share a single INF (same HWID block) |
+| 15th Gen Core / Core Ultra 200 | Arrow Lake (Desktop/Mobile) | ✅ Full | Includes Arrow Lake-S (desktop) and Arrow Lake-H (mobile) |
+| 14th Gen Core / Core Ultra 100 | Meteor Lake (Tile-based) | ✅ Full | PCH (N/H/S) moved to `PCH Family` category |
+| Core Ultra 200V | Lunar Lake (Low Power) | ✅ Full | Classified under `ATOM / LOW POWER / EMBEDDED` – uses Windows inbox drivers |
+| 12th–14th Gen Core | Alder Lake / Raptor Lake | ✅ Full | Desktop, mobile, and PCH fully supported |
+| 10th–11th Gen | Comet Lake / Tiger Lake | ✅ Full | Complete support (including PCH and DmaSec extensions) |
+| 8th–9th Gen | Coffee Lake / Whiskey Lake | ✅ Full | Stable support |
+| 6th–7th Gen | Skylake / Kaby Lake | ✅ Full | Mature support |
+| 4th–5th Gen | Haswell / Broadwell | ✅ Full | Legacy support |
+| 2nd–3rd Gen | Sandy Bridge / Ivy Bridge | ✅ Full | Extended support (including IvyTown Xeon E5/E7 v2) |
+
+> **ℹ️ Notes**  
+> - Platforms marked with `*` in the database (e.g., Emerald Rapids, Ice Lake‑SP) have **no dedicated INF** – their HWIDs are either covered by an adjacent generation’s INF or handled by Windows inbox drivers.  
+> - The 16th generation (as a “Client Core” family) **does not exist** – Lunar Lake (Core Ultra 200V) is classified as low power.  
+> - Wildcat Lake shares HWIDs with Panther Lake and does not have its own section.
 
 
 [↑ Back to top](#top)
