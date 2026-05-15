@@ -671,7 +671,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 **Note on 16th generation:** The 16th generation (codenamed Lunar Lake, marketed as Core Ultra 200V) is classified under the ATOM / LOW POWER category because of its low-power, Atom-derived architecture.
 
-**Note on missing platforms (*):** Platforms marked with * in the legend have no dedicated INF file in Intel Chipset Device Software. Intel does not ship a separate chipset driver for these platforms - their Hardware IDs are either covered by an adjacent generation's INF or handled exclusively by Windows inbox drivers and OEM-specific packages.
+**Note on missing platforms (*):** Platforms marked with * in the legend have no dedicated INF file in Intel Chipset Device Software. Intel does not ship a separate chipset INF for these platforms - their Hardware IDs are either covered by an adjacent generation's INF or handled exclusively by Windows inbox drivers and OEM-specific packages.
 
 **Date detection logic:**
 - Dates without asterisk are taken directly from the INF file's DriverVer field.
