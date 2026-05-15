@@ -87,14 +87,14 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 ### CLIENT - Core
 
 #### PantherLake
-**Generation:** 17th Gen Core/Core Ultra 300 - Panther Lake - High Performance Mobile / Efficient Mobile
+**Generation:** 17th Gen Core/Core Ultra 300 - Panther Lake - High Perf. / Eff. Mobile
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | PantherLakeSystem.inf, PantherLakeSystemNorthpeak.inf | 10.1.20490.8818 | 10.1.56.28 | 06/02/2026* | E300, E301, E302, E303, E304, E305, E306, E307, E308, E309, E30A, E30B, E30C, E30D, E30E, E30F, E310, E311, E312, E313, E314, E315, E316, E317, E318, E319, E31A, E31B, E31C, E31D, E31E, E31F, E322, E323, E348, E362, E363, E371, E37F, E400, E401, E402, E403, E404, E405, E406, E407, E408, E409, E40A, E40B, E40C, E40D, E40E, E40F, E410, E411, E412, E413, E414, E415, E416, E417, E418, E419, E41A, E41B, E41C, E41D, E41E, E41F, E422, E423, E448, E44A, E462, E463, E471 |
 
 #### ArrowLake
-**Generation:** 15th Gen Core/Core Ultra 200 - Arrow Lake - Desktop / High Performance Mobile
+**Generation:** 15th Gen Core/Core Ultra 200 - Arrow Lake - Desktop / High Perf. Mobile
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
@@ -115,7 +115,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | MeteorLakeSystem.inf, MeteorLakeSystemNorthpeak.inf | 10.1.20490.8818 | 10.1.47.12 | 06/02/2026* | AE22, AE23, AE24 |
 
 #### MeteorLake PCH-H
-**Generation:** 14th Gen Core/Core Ultra 100 - Meteor Lake - Mobile PCH (High Performance)
+**Generation:** 14th Gen Core/Core Ultra 100 - Meteor Lake - Mobile PCH (High Perf.)
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
@@ -129,14 +129,14 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | MeteorLakePCH-SSystem.inf | 10.1.20490.8818 | 10.1.51.10 | 06/02/2026* | 7F00, 7F01, 7F02, 7F03, 7F04, 7F05, 7F06, 7F07, 7F08, 7F09, 7F0A, 7F0B, 7F0C, 7F0D, 7F0E, 7F0F, 7F10, 7F11, 7F12, 7F13, 7F14, 7F15, 7F16, 7F17, 7F18, 7F19, 7F1A, 7F1B, 7F1C, 7F1D, 7F1E, 7F1F, 7F20, 7F21, 7F23, 7F24, 7F2F, 7F58, 7F59, 7F69 |
 
 #### RaptorLake
-**Generation:** 13th Gen Core - Raptor Lake - Desktop / Performance Mobile / Efficient Mobile
+**Generation:** 13th Gen Core - Raptor Lake - Desktop / Perf. Mobile / Eff. Mobile
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | RaptorLakeSystem.inf | 10.1.20490.8818 | 10.1.49.12 | 06/02/2026* | A70D, A72D, A74D |
 
 #### AlderLake
-**Generation:** 12th Gen Core - Alder Lake - Desktop / Performance Mobile / Efficient Mobile
+**Generation:** 12th Gen Core - Alder Lake - Desktop / Perf. Mobile / Eff. Mobile
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
@@ -463,21 +463,21 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | AlderLakePCH-NSystem.inf, AlderLakePCH-NSystemISH.inf, AlderLakePCH-NSystemNorthpeak.inf | 10.1.20490.8818 | 10.1.50.8 | 06/02/2026* | 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5489, 548A, 548B, 548C, 548D, 548E, 548F, 5490, 5491, 5492, 5493, 5494, 5495, 5496, 5497, 5498, 5499, 549A, 549B, 549C, 549D, 549E, 549F, 54A0, 54A1, 54A3, 54A4, 54A6, 54AF, 54B0, 54B1, 54B2, 54B3, 54B4, 54B5, 54B6, 54B7, 54B8, 54B9, 54BA, 54BB, 54BC, 54BD, 54BE, 54BF, 54EF |
 
 #### AlderLake_Extension-Dmasec
-**Generation:** 600 Series - Alder Lake - DMA Security Extension (IOMMU / BitLocker)
+**Generation:** 600 Series - Alder Lake - DMA Security Ext. (IOMMU / BitLocker)
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | AlderLakeDmaSecExtension.inf | 10.1.20490.8818 | 10.1.45.10 | 06/02/2026* | 460D, 461F, 462D, 462F, 463D, 463F, 464D, 466E |
 
 #### AlderLakePCH-N_Extension-Dmasec
-**Generation:** 600 Series - Alder Lake PCH-N - DMA Security Extension (IOMMU / BitLocker)
+**Generation:** 600 Series - Alder Lake PCH-N - DMA Security Ext. (IOMMU / BitLocker)
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | AlderLakePCH-NDmaSecExtension.inf | 10.1.20490.8818 | 10.1.50.8 | 06/02/2026* | 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5489, 548A, 548B, 548C, 548D, 548E, 548F, 5490, 5491, 5492, 5493, 5494, 5495, 5496, 5497, 5498, 5499, 549A, 549B, 549C, 549D, 549E, 549F, 54B0, 54B1, 54B2, 54B3, 54B4, 54B5, 54B6, 54B7, 54B8, 54B9, 54BA, 54BB, 54BC, 54BD, 54BE, 54BF |
 
 #### AlderLakepch-P_Extension-Dmasec
-**Generation:** 600 Series - Alder Lake PCH-P - DMA Security Extension (IOMMU / BitLocker)
+**Generation:** 600 Series - Alder Lake PCH-P - DMA Security Ext. (IOMMU / BitLocker)
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
@@ -505,14 +505,14 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | JasperLakePCH-NSystem.inf, JasperLakePCH-NSystemLPSS.inf, JasperLakePCH-NSystemNorthpeak.inf | 10.1.20490.8818 | 10.1.32.3 | 06/02/2026* | 4D80, 4D81, 4D82, 4D83, 4D84, 4D85, 4D86, 4D87, 4D88, 4D89, 4D8A, 4D8B, 4D8C, 4D8D, 4D8E, 4D8F, 4D90, 4D91, 4D92, 4D93, 4D94, 4D95, 4D96, 4D97, 4D98, 4D99, 4D9A, 4D9B, 4D9C, 4D9D, 4D9E, 4D9F, 4DA0, 4DA1, 4DA3, 4DA4, 4DA6, 4DA8, 4DA9, 4DAA, 4DAB, 4DAF, 4DB8, 4DB9, 4DBA, 4DBB, 4DBC, 4DBD, 4DBE, 4DBF, 4DC5, 4DC6, 4DE8, 4DE9, 4DEA, 4DEB, 4DEF, 4DFB |
 
 #### TigerLakePCH-H_Extension-Dmasec
-**Generation:** 500 Series - Tiger Lake PCH-H - DMA Security Extension (IOMMU / BitLocker)
+**Generation:** 500 Series - Tiger Lake PCH-H - DMA Security Ext. (IOMMU / BitLocker)
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | TigerLakePCH-HDmaSecExtension.inf | 10.1.20490.8818 | 10.1.34.13 | 06/02/2026* | 4380, 4381, 4382, 4383, 4384, 4385, 4386, 4387, 4388, 4389, 438A, 438B, 438C, 438D, 438E, 438F, 4390, 4391, 4392, 4393, 4394, 4395, 4396, 4397, 4398, 4399, 439A, 439B, 439C, 439D, 439E, 439F, 43B0, 43B1, 43B2, 43B3, 43B4, 43B5, 43B6, 43B7, 43B8, 43B9, 43BA, 43BB, 43BC, 43BD, 43BE, 43BF, 43C0, 43C1, 43C2, 43C3, 43C4, 43C5, 43C6, 43C7 |
 
 #### TigerLakePCH-LP_Extension-Dmasec
-**Generation:** 500 Series - Tiger Lake PCH-LP - DMA Security Extension (IOMMU / BitLocker)
+**Generation:** 500 Series - Tiger Lake PCH-LP - DMA Security Ext. (IOMMU / BitLocker)
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
@@ -554,7 +554,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | IceLakePCH-NSystem.inf, IceLakePCH-NSystemLPSS.inf | 10.1.20490.8818 | 10.1.22.4 | 06/02/2026* | 3880, 3881, 3882, 3883, 3884, 3885, 3886, 3887, 3888, 3889, 388A, 388B, 388C, 388D, 388E, 388F, 3890, 3891, 3892, 3893, 3894, 3895, 3896, 3897, 3898, 3899, 389A, 389B, 389C, 389D, 389E, 389F, 38A0, 38A1, 38A3, 38A4, 38A6, 38A8, 38A9, 38AA, 38AB, 38B8, 38B9, 38BA, 38BB, 38BC, 38BD, 38BE, 38BF, 38C5, 38C6, 38C7, 38E8, 38E9, 38EA, 38EB, 38FB |
 
 #### CometLakePCH-LP_Extension-Dmasec
-**Generation:** 400 Series - Comet Lake PCH-U - DMA Security Extension (IOMMU / BitLocker)
+**Generation:** 400 Series - Comet Lake PCH-U - DMA Security Ext. (IOMMU / BitLocker)
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
