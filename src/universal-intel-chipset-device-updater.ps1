@@ -1,5 +1,5 @@
 <#PSScriptInfo
-.VERSION 2026.03.0013
+.VERSION 2026.05.0014
 .GUID c5044de3-67b5-4e70-b6fc-75e7847c799e
 .NAME universal-intel-chipset-device-updater
 .AUTHOR Marcin Grygiel
@@ -13,7 +13,7 @@
 .REQUIREDSCRIPTS
 .EXTERNALSCRIPTDEPENDENCIES
 .RELEASENOTES
-v2026.03.0013 - Published to PowerShell Gallery (PSScriptInfo block added)
+v2026.05.0014 - Improved display formatting: removed "Generation:" label, added parsing info hint, cleaned up extra blank lines.
 #>
 
 <#
@@ -202,7 +202,7 @@ if ($QuietMode) {
 # =============================================
 # SCRIPT VERSION
 # =============================================
-$ScriptVersion = "2026.03.0013"
+$ScriptVersion = "2026.05.0014"
 # =============================================
 
 # Detect if running from SFX package
@@ -563,24 +563,27 @@ function Show-Header {
     Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
 
     Write-Host "**                                                                       **" -ForegroundColor Gray -BackgroundColor DarkBlue
+    $authorText =  "           Author: Marcin Grygiel / GitHub.com/FirstEverTech           "
+    $padding = [math]::Floor((69 - $authorText.Length) / 2)
+    $spaces = " " * [math]::Max(0, $padding)
     Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "              Author: Marcin Grygiel / www.firstever.tech              " -NoNewline -ForegroundColor Green -BackgroundColor DarkBlue
+    Write-Host "$spaces$authorText$spaces" -NoNewline -ForegroundColor Green -BackgroundColor DarkBlue
+    # Adjust length – if the text does not reach the end, padding with spaces to 69 characters (internal width)
+    $totalLength = $spaces.Length + $authorText.Length + $spaces.Length
+    if ($totalLength -lt 69) {
+        Write-Host (" " * (69 - $totalLength)) -NoNewline -ForegroundColor Green -BackgroundColor DarkBlue
+    }
     Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**                                                                       **" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "** --------------------------------------------------------------------- **" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "         This tool is not affiliated with Intel Corporation.           " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "         INF files are sourced from official Intel servers.            " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "         Use at your own risk.                                         " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "** --------------------------------------------------------------------- **" -ForegroundColor Gray -BackgroundColor DarkBlue
+
     Write-Host "**                                                                       **" -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "    Visit: GitHub.com/FirstEverTech/Universal-Intel-Chipset-Updater    " -NoNewline -ForegroundColor White -BackgroundColor DarkBlue
+    Write-Host "           This tool is not affiliated with Intel Corporation.         " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "           INF files are sourced from official Intel servers.          " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "           Use at your own risk.                                       " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "**                                                                       **" -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "*************************************************************************/" -ForegroundColor Gray -BackgroundColor DarkBlue
@@ -1819,7 +1822,6 @@ function Install-ChipsetINF {
 
 function Show-FinalCredits {
     Clear-Host
-    # --- Header (unchanged) ---
     Write-Host "/*************************************************************************" -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "                UNIVERSAL INTEL CHIPSET DEVICE UPDATER                 " -NoNewline -ForegroundColor White -BackgroundColor DarkBlue
@@ -1833,24 +1835,27 @@ function Show-FinalCredits {
     Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
 
     Write-Host "**                                                                       **" -ForegroundColor Gray -BackgroundColor DarkBlue
+    $authorText =  "           Author: Marcin Grygiel / GitHub.com/FirstEverTech           "
+    $padding = [math]::Floor((69 - $authorText.Length) / 2)
+    $spaces = " " * [math]::Max(0, $padding)
     Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "              Author: Marcin Grygiel / www.firstever.tech              " -NoNewline -ForegroundColor Green -BackgroundColor DarkBlue
+    Write-Host "$spaces$authorText$spaces" -NoNewline -ForegroundColor Green -BackgroundColor DarkBlue
+    # Adjust length – if the text does not reach the end, padding with spaces to 69 characters (internal width)
+    $totalLength = $spaces.Length + $authorText.Length + $spaces.Length
+    if ($totalLength -lt 69) {
+        Write-Host (" " * (69 - $totalLength)) -NoNewline -ForegroundColor Green -BackgroundColor DarkBlue
+    }
     Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**                                                                       **" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "** --------------------------------------------------------------------- **" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "         This tool is not affiliated with Intel Corporation.           " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "         INF files are sourced from official Intel servers.            " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "         Use at your own risk.                                         " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "** --------------------------------------------------------------------- **" -ForegroundColor Gray -BackgroundColor DarkBlue
+
     Write-Host "**                                                                       **" -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
-    Write-Host "         GitHub: FirstEverTech/Universal-Intel-Chipset-Updater         " -NoNewline -ForegroundColor White -BackgroundColor DarkBlue
+    Write-Host "           This tool is not affiliated with Intel Corporation.         " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "           INF files are sourced from official Intel servers.          " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "**" -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
+    Write-Host "           Use at your own risk.                                       " -NoNewline -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "**" -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "**                                                                       **" -ForegroundColor Gray -BackgroundColor DarkBlue
     Write-Host "*************************************************************************/" -ForegroundColor Gray -BackgroundColor DarkBlue
@@ -2051,7 +2056,7 @@ try {
         exit
     }
 
-    Write-Host " Parsing INF information..." -ForegroundColor Green
+    Write-Host " Parsing INF information - it may take up to 30 seconds!" -ForegroundColor Green
     Write-Host ""
 
     $chipsetData = Parse-ChipsetINFsFromMarkdown -MarkdownContent $chipsetInfo
@@ -2073,12 +2078,11 @@ try {
     $chipsetUpdateAvailable = $false
     $windowsInboxPlatformsFound = @()
 
+    # First pass: collect all matches without printing
     foreach ($device in $detectedIntelChipsets) {
         $hwId = $device.HWID
-
         if ($chipsetData.ContainsKey($hwId)) {
             $chipsetInfo = $chipsetData[$hwId]
-
             if ($chipsetInfo.IsWindowsInbox) {
                 $windowsInboxPlatformsFound += @{
                     HWID        = $hwId
@@ -2087,14 +2091,9 @@ try {
                     Generation  = $chipsetInfo.Generation
                     Version     = $chipsetInfo.Version
                 }
-                Write-Host " WINDOWS INBOX DRIVERS: $($chipsetInfo.Platform) (HWID: $hwId)" -ForegroundColor Cyan
-                Write-Host " This platform uses Windows 11 24H2 inbox drivers - no separate INF installation required." -ForegroundColor Cyan
-                Write-Host " Intel no longer includes these PCH IDs in Chipset Device Software packages." -ForegroundColor Cyan
                 continue
             }
-
             $currentVersion = Get-CurrentINFVersion -DeviceInstanceId $device.InstanceId
-
             $matchingChipsets += @{
                 Device         = $device
                 ChipsetInfo    = $chipsetInfo
@@ -2102,50 +2101,34 @@ try {
                 HardwareID     = $device.HardwareID
                 InstanceId     = $device.InstanceId
             }
-
-            Write-Host " Found compatible platform: $($chipsetInfo.Platform) (HWID: $hwId)" -ForegroundColor Green
-            Write-DebugMessage "Platform match: $($chipsetInfo.Platform) - Current: $currentVersion, Latest: $($chipsetInfo.Version)"
         }
     }
 
+    # Display grouped Windows Inbox platforms (compact)
     if ($windowsInboxPlatformsFound.Count -gt 0) {
-        Write-Host "`n === WINDOWS INBOX DRIVERS DETECTED ===" -ForegroundColor Cyan
-        Write-Host " The following platforms use Windows 11 24H2 inbox drivers:" -ForegroundColor Cyan
-        Write-Host ""
-        foreach ($inboxPlatform in $windowsInboxPlatformsFound) {
-            Write-Host " $($inboxPlatform.Platform)" -ForegroundColor White
-            if ($inboxPlatform.Generation) {
-                Write-Host "   Generation: $($inboxPlatform.Generation)" -ForegroundColor Gray
-            }
-            Write-Host "   HWID: $($inboxPlatform.HWID)" -ForegroundColor Gray
-            Write-Host "   Version: $($inboxPlatform.Version)" -ForegroundColor Gray
-            Write-Host "   Status: Using Windows inbox drivers" -ForegroundColor Green
-            Write-Host ""
+        Write-Host "`n Windows Inbox Drivers detected (no installation required):" -ForegroundColor Cyan
+        $inboxGrouped = $windowsInboxPlatformsFound | Group-Object Platform
+        foreach ($group in $inboxGrouped) {
+            $hwids = ($group.Group | ForEach-Object { $_.HWID }) -join ', '
+            Write-Host " - $($group.Name) (HWID: $hwids)" -ForegroundColor Gray
+            Write-Host "   Generation: $($group.Group[0].Generation)" -ForegroundColor DarkGray
+            Write-Host "   Version: $($group.Group[0].Version)" -ForegroundColor DarkGray
         }
-        Write-Host "`n These platforms do not require separate INF installation." -ForegroundColor Cyan
-        Write-Host " Intel provides these drivers directly through Windows Update." -ForegroundColor Cyan
-        Write-Host ""
+        # Removed extra Write-Host ""
     }
 
-    if ($matchingChipsets.Count -eq 0) {
-        if ($windowsInboxPlatformsFound.Count -gt 0) {
-            Write-Host "`n No additional Intel chipset platforms requiring updates found." -ForegroundColor Yellow
-            Write-Host " Your system uses Windows inbox drivers for the detected Intel platforms." -ForegroundColor Green
-        } else {
-            Write-Host "`n No compatible Intel chipset platform detected." -ForegroundColor Yellow
-            Write-Host " If you use an Intel system, ensure it is Sandy Bridge or newer." -ForegroundColor Yellow
-            Write-Host "`n Note: Very recent platforms (Arrow Lake-S / Z890 and newer) use Windows" -ForegroundColor Yellow
-            Write-Host "       inbox drivers and therefore may not be included in Intel packages." -ForegroundColor Yellow
+    # Display grouped compatible platforms (compact)
+    if ($matchingChipsets.Count -gt 0) {
+        Write-Host " Found compatible platform(s):" -ForegroundColor Green
+        $groupedMatches = $matchingChipsets | Group-Object { $_.ChipsetInfo.Platform }
+        foreach ($group in $groupedMatches) {
+            $hwids = ($group.Group | ForEach-Object { $_.Device.HWID }) -join ', '
+            Write-Host " - $($group.Name) (HWID: $hwids)" -ForegroundColor White
         }
-        Cleanup
-        if (-not $AutoMode) {
-            Write-Host "`n Press any key..."
-            $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown')
-        }
-        Show-FinalCredits
-        exit
+        # Removed extra Write-Host ""
     }
 
+    # Build unique platforms for detailed analysis
     $uniquePlatforms = @{}
     foreach ($match in $matchingChipsets) {
         $platform = $match.ChipsetInfo.Platform
@@ -2158,7 +2141,6 @@ try {
                 CurrentVersions = @()
             }
         }
-
         if ($match.CurrentVersion) {
             $uniquePlatforms[$platform].CurrentVersions += $match.CurrentVersion
         }
@@ -2174,8 +2156,6 @@ try {
     $hasAnyAsterisk = $false
     $hasNewerWindowsInbox = $false
 
-    Write-DebugMessage "Starting platform display loop."
-
     foreach ($platformName in $uniquePlatforms.Keys) {
         Write-DebugMessage "Displaying platform: $platformName"
 
@@ -2184,29 +2164,28 @@ try {
         $devices = $platformData.Devices
         $currentVersions = $platformData.CurrentVersions | Sort-Object -Unique
 
+        # Platform name (white)
         Write-Host " Platform: $platformName" -ForegroundColor White
+
+        # Generation line (gray) - without "Generation:" label
         if ($chipsetInfo.Generation) {
-            Write-Host " Generation: $($chipsetInfo.Generation)" -ForegroundColor Gray
+            Write-Host "  $($chipsetInfo.Generation)" -ForegroundColor Gray
         }
 
-        if ($currentVersions.Count -gt 0) {
-            Write-Host " Current Version: $(($currentVersions -join ', ')) ---> Latest Version: $($chipsetInfo.Version)" -ForegroundColor Gray
-        } else {
-            Write-Host " Current Version: Unable to determine --->  Latest Version: $($chipsetInfo.Version)" -ForegroundColor Gray
-        }
-
+        # Installer version line (gray)
         $installerVersionDisplay = "$($chipsetInfo.Package) ($($chipsetInfo.Date))"
-        Write-Host " Installer Version: $installerVersionDisplay" -ForegroundColor Yellow
+        Write-Host "  Latest Intel Chipset INF Utility: $installerVersionDisplay" -ForegroundColor Gray
 
+        # Status line
         $needsUpdate = $false
         $newerVersionDetected = $false
+        $currentVersionsText = if ($currentVersions.Count -gt 0) { $currentVersions -join ', ' } else { "Unable to determine" }
 
         if ($currentVersions.Count -gt 0) {
             foreach ($currentVersion in $currentVersions) {
                 try {
                     $currentVer = [version]$currentVersion
                     $latestVer = [version]$chipsetInfo.Version
-
                     if ($currentVer -gt $latestVer) {
                         $newerVersionDetected = $true
                         break
@@ -2222,31 +2201,30 @@ try {
                     }
                 }
             }
-
-            if ($newerVersionDetected) {
-                Write-Host " Status: Newer INF version detected (Windows Inbox)." -ForegroundColor Cyan
-                $hasNewerWindowsInbox = $true
-            } elseif (-not $needsUpdate) {
-                Write-Host " Status: Already on latest version." -ForegroundColor Green
-            } else {
-                $currentVersionsText = $currentVersions -join ', '
-                Write-Host " Status: Update available - current: $currentVersionsText, latest: $($chipsetInfo.Version)" -ForegroundColor Yellow
-                $chipsetUpdateAvailable = $true
-            }
         } else {
-            Write-Host " Status: INF files will be installed" -ForegroundColor Yellow
-            $chipsetUpdateAvailable = $true
+            $needsUpdate = $true
         }
+
+        if ($newerVersionDetected) {
+            $statusText = "Inbox / newer detected"
+            $statusColor = "Magenta"
+            $hasNewerWindowsInbox = $true
+        } elseif ($needsUpdate) {
+            $statusText = "Update available"
+            $statusColor = "Yellow"
+            $chipsetUpdateAvailable = $true
+        } else {
+            $statusText = "Latest version"
+            $statusColor = "Green"
+        }
+
+        Write-Host "  Detected INF: $currentVersionsText -> Latest INF: $($chipsetInfo.Version) -> $statusText" -ForegroundColor $statusColor
+        Write-Host ""
 
         if ($chipsetInfo.HasAsterisk) {
             $hasAnyAsterisk = $true
         }
-
-        Write-Host ""
-        Write-DebugMessage "Finished displaying platform: $platformName"
     }
-
-    Write-DebugMessage "Finished all platform displays."
 
     if ($hasAnyAsterisk) {
         Write-Host " Note: INF files marked with (*) use the symbolic date 18/07/1968" -ForegroundColor Yellow
