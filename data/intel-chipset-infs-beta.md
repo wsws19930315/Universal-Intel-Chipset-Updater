@@ -4,14 +4,15 @@ The Intel Chipset Device Software installs the Windows INF files. An INF is a te
 
 This dataset organizes the historical naming of platforms, with a focus on technical rather than marketing aspects. It is based on:
 
-- Detects 5537 INF files
-- Pulls 2996 unique HWIDs
-- Creates 106152 entries
+- Detects 5538 INF files
+- Pulls 3000 unique HWIDs
+- Creates 106156 entries
 
 ## Naming Legend - Microarchitecture / Segment
 
 ### CLIENT - Core
 - Panther Lake - High Performance Mobile / Efficient Mobile
+- Wildcat Lake - Edge / Budget Mobile
 - Arrow Lake - Desktop / High Performance Mobile
 - Meteor Lake - Tile-based Mobile SoC
 - Raptor Lake - Desktop / Performance Mobile / Efficient Mobile
@@ -92,6 +93,13 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | PantherLakeSystem.inf, PantherLakeSystemNorthpeak.inf | 10.1.20490.8818 | 10.1.56.28 | 06/02/2026* | E300, E301, E302, E303, E304, E305, E306, E307, E308, E309, E30A, E30B, E30C, E30D, E30E, E30F, E310, E311, E312, E313, E314, E315, E316, E317, E318, E319, E31A, E31B, E31C, E31D, E31E, E31F, E322, E323, E348, E362, E363, E371, E37F, E400, E401, E402, E403, E404, E405, E406, E407, E408, E409, E40A, E40B, E40C, E40D, E40E, E40F, E410, E411, E412, E413, E414, E415, E416, E417, E418, E419, E41A, E41B, E41C, E41D, E41E, E41F, E422, E423, E448, E44A, E462, E463, E471 |
+
+#### WildcatLake
+**Generation:** 17th Gen Core/Core Ultra 300 - Wildcat Lake (Edge / Budget Mobile)
+
+| INF | Package | Version | Date | HWIDs |
+|--------|---------|---------|------|--------|
+| WildcatLakeSystem.inf | 10.1.20490.8822 | 10.1.59.12 | 13/03/2026* | 4D22, 4D23, 4D48, 4D71 |
 
 #### ArrowLake
 **Generation:** 15th Gen Core/Core Ultra 200 - Arrow Lake - Desktop / High Perf. Mobile
@@ -677,4 +685,4 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 - Dates without asterisk are taken directly from the INF file's DriverVer field.
 - Dates marked with * indicate that the original INF file uses the symbolic date 07/18/1968 (Intel's founding date), which is intentionally used to lower the driver ranking in Windows. In such cases, the displayed date was approximated using the digital signature timestamp from the corresponding .cat file.
 
-**Source:** [Universal Intel Chipset Device Updater](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater) / **Project by:** [Marcin Grygiel](https://www.linkedin.com/in/marcin-grygiel/) / **Last Update:** 15-05-2026
+**Source:** [Universal Intel Chipset Device Updater](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater) / **Project by:** [Marcin Grygiel](https://www.linkedin.com/in/marcin-grygiel/) / **Last Update:** 03-06-2026
