@@ -757,3 +757,11 @@ Link = https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases
 Prefix = \SetupChipset.msi
 SHA256 = 56639D8DB2D647E0A10AB8619CA687E31585641251DCDAA4A829A509647467E7
 Backup = https://www.firstever.tech/download/backup/intel_chipset_10.1.20490.8818.zip
+
+Name = Intel Chipset Device Software
+INFVer = 13/03/2026,10.1.20524.8822
+Variant = Consumer
+Link = https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/download/archive/intel_chipset_10.1.20524.8822.zip
+Prefix = \SetupChipset.exe
+SHA256 = 8FE2DCE5EA9E2BFA6D23BD3D735DD809B4E6D7F60DAF2B70197A632692E1A8D9
+Backup = https://www.firstever.tech/download/backup/intel_chipset_10.1.20524.8822.zip
