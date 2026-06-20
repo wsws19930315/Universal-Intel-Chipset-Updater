@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import os, sys, requests, numpy as np, matplotlib
+import os, sys, math, requests, numpy as np, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -28,65 +28,61 @@ def fetch_stars(repo):
         page += 1
     return sorted(dates)
 
-LINK_BLUE = "#58a6ff"
-LINE      = "#1f6feb"
-GRID_MAJ  = "#444444"
-GRID_MIN  = "#2a2a2a"
+BLUE     = "#58a6ff"   # dots + all labels
+LINE     = "#1f6feb"   # chart line
+GRID_MAJ = "#444444"
+GRID_MIN = "#2a2a2a"
 
 def generate(dates, repo, out):
-    counts   = list(range(1, len(dates) + 1))
+    counts = list(range(1, len(dates) + 1))
     owner, name = repo.split("/")
 
     fig, ax = plt.subplots(figsize=(10, 3.2), dpi=150)
-    fig.patch.set_facecolor("none")   # transparent
-    ax.set_facecolor("none")           # transparent
+    fig.patch.set_facecolor("none")
+    ax.set_facecolor("none")
 
-    # ── line + fill ───────────────────────────────────────────────────────────
     date_nums = mdates.date2num(dates)
-    ax.plot(dates, counts, color=LINE, linewidth=1.8, zorder=3)
+
+    # line
+    ax.plot(dates, counts, color=LINE, linewidth=2.5, zorder=3)
     ax.fill_between(dates, counts, color=LINE, alpha=0.15, zorder=2)
 
-    # ── dots at 31 evenly spaced vertical positions ───────────────────────────
+    # dots — 31 evenly spaced, s=30 → ~7px diameter
     x31 = np.linspace(date_nums[0], date_nums[-1], 31)
     y31 = np.interp(x31, date_nums, counts)
-    ax.scatter(mdates.num2date(x31), y31,
-               color=LINK_BLUE, s=49, zorder=4, linewidths=0)
+    ax.scatter(mdates.num2date(x31), y31, color=BLUE, s=30, zorder=4, linewidths=0)
 
-    # ── grid: major = monthly, minor = 5 per month (~6-day interval) ──────────
+    # Y axis: exactly 10 lines, 0 at bottom border, max at top border
+    nice_max = math.ceil(max(counts) / 9) * 9
+    ax.set_ylim(0, nice_max)
+    ax.set_yticks(np.linspace(0, nice_max, 10))
+
+    # X grid: major = monthly, minor = 5 per month
     ax.set_axisbelow(True)
     ax.xaxis.set_major_locator(mdates.MonthLocator())
     ax.xaxis.set_minor_locator(mdates.DayLocator(interval=6))
-    ax.grid(True, which="major", color=GRID_MAJ, linewidth=0.7)
-    ax.grid(True, which="minor", color=GRID_MIN, linewidth=0.4)
+    ax.grid(True, which="major", color=GRID_MAJ, linewidth=0.7, axis="both")
+    ax.grid(True, which="minor", color=GRID_MIN, linewidth=0.4, axis="x")
 
-    # 10 horizontal lines
-    ax.yaxis.set_major_locator(plt.MaxNLocator(10, integer=True))
-    ax.yaxis.grid(True, which="major", color=GRID_MAJ, linewidth=0.7)
-
-    # ── axes styling ──────────────────────────────────────────────────────────
-    ax.tick_params(colors=LINK_BLUE, labelsize=7, which="both")
+    # tick styling — all BLUE
+    ax.tick_params(axis="both", which="both", colors=BLUE, labelsize=7)
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%b '%y"))
     fig.autofmt_xdate(rotation=0, ha="center")
 
     for spine in ax.spines.values():
         spine.set_edgecolor(GRID_MAJ)
 
-    ax.set_ylabel("Stars", color=LINK_BLUE, fontsize=8,
-                  fontfamily="DejaVu Sans")
-    ax.set_xlabel("Date",  color=LINK_BLUE, fontsize=8,
-                  fontfamily="DejaVu Sans")
-
-    # ── title — not bold, link blue, normal weight ────────────────────────────
+    ax.set_ylabel("Stars", color=BLUE, fontsize=8, fontfamily="DejaVu Sans")
+    ax.set_xlabel("Date",  color=BLUE, fontsize=8, fontfamily="DejaVu Sans")
     ax.set_title(
         f"{owner} / {name} · Star History",
-        color=LINK_BLUE, fontsize=10, fontweight="normal",
-        fontfamily="DejaVu Sans", pad=10
+        color=BLUE, fontsize=10, fontweight="normal",
+        fontfamily="DejaVu Sans", pad=10,
     )
 
     plt.tight_layout(pad=0.8)
     out.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out, format="svg", bbox_inches="tight",
-                transparent=True)
+    fig.savefig(out, format="svg", bbox_inches="tight", transparent=True)
     plt.close(fig)
 
 if __name__ == "__main__":
