@@ -3,7 +3,7 @@ import os, sys, math, requests, numpy as np, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 REPO    = os.environ["REPO"]
@@ -28,14 +28,50 @@ def fetch_stars(repo):
         page += 1
     return sorted(dates)
 
-BLUE     = "#58a6ff"   # dots + all labels
-LINE     = "#1f6feb"   # chart line
+BLUE     = "#58a6ff"
+LINE     = "#1f6feb"
 GRID_MAJ = "#444444"
 GRID_MIN = "#2a2a2a"
 
+def x_axis_config(start: datetime, end: datetime):
+    """Returns (locator, formatter, xlabel) based on span."""
+    days  = (end - start).days
+    years = days / 365.25
+
+    if days < 32:
+        # < 1 month: only start and end labels
+        loc = mdates.FixedLocator(mdates.date2num([start, end]))
+        fmt = mdates.DateFormatter("%b '%y")
+        lbl = "Date"
+    elif years < 1:
+        loc = mdates.MonthLocator()
+        fmt = mdates.DateFormatter("%b '%y")
+        lbl = "Month"
+    elif years < 3:
+        loc = mdates.MonthLocator(bymonth=[1, 4, 7, 10])   # quarterly
+        fmt = mdates.DateFormatter("%b '%y")
+        lbl = "Quarter"
+    elif years < 6:
+        loc = mdates.MonthLocator(bymonth=[1, 7])           # every 6 months
+        fmt = mdates.DateFormatter("%b '%y")
+        lbl = "Half-year"
+    elif years < 10:
+        loc = mdates.YearLocator()
+        fmt = mdates.DateFormatter("%Y")
+        lbl = "Year"
+    else:
+        loc = mdates.YearLocator(2)
+        fmt = mdates.DateFormatter("%Y")
+        lbl = "Year"
+
+    return loc, fmt, lbl
+
 def generate(dates, repo, out):
-    counts = list(range(1, len(dates) + 1))
+    counts  = list(range(1, len(dates) + 1))
     owner, name = repo.split("/")
+    now     = datetime.utcnow()
+    x_start = dates[0]
+    x_end   = now
 
     fig, ax = plt.subplots(figsize=(10, 3.2), dpi=150)
     fig.patch.set_facecolor("none")
@@ -43,37 +79,44 @@ def generate(dates, repo, out):
 
     date_nums = mdates.date2num(dates)
 
-    # line
+    # line + fill
     ax.plot(dates, counts, color=LINE, linewidth=2.5, zorder=3)
     ax.fill_between(dates, counts, color=LINE, alpha=0.15, zorder=2)
 
-    # dots — 31 evenly spaced, s=30 → ~7px diameter
-    x31 = np.linspace(date_nums[0], date_nums[-1], 31)
+    # 31 evenly spaced dots across full span
+    x31 = np.linspace(mdates.date2num(x_start), mdates.date2num(x_end), 31)
     y31 = np.interp(x31, date_nums, counts)
     ax.scatter(mdates.num2date(x31), y31, color=BLUE, s=30, zorder=4, linewidths=0)
 
-    # Y axis: exactly 10 lines, 0 at bottom border, max at top border
-    nice_max = math.ceil(max(counts) / 9) * 9
+    # X limits — no empty right margin
+    ax.set_xlim(x_start, x_end)
+
+    # Y: 10 lines, 0 at bottom, nice max at top
+    nice_max = max(math.ceil(max(counts) / 9) * 9, 9)
     ax.set_ylim(0, nice_max)
     ax.set_yticks(np.linspace(0, nice_max, 10))
 
-    # X grid: major = monthly, minor = 5 per month
+    # grid
     ax.set_axisbelow(True)
-    ax.xaxis.set_major_locator(mdates.MonthLocator())
-    ax.xaxis.set_minor_locator(mdates.DayLocator(interval=6))
-    ax.grid(True, which="major", color=GRID_MAJ, linewidth=0.7, axis="both")
-    ax.grid(True, which="minor", color=GRID_MIN, linewidth=0.4, axis="x")
+    loc, fmt, x_lbl = x_axis_config(x_start, x_end)
+    ax.xaxis.set_major_locator(loc)
+    ax.xaxis.set_major_formatter(fmt)
+    ax.grid(True, which="major", color=GRID_MAJ, linewidth=0.7)
 
-    # tick styling — all BLUE
+    # tick styling
     ax.tick_params(axis="both", which="both", colors=BLUE, labelsize=7)
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%b '%y"))
     fig.autofmt_xdate(rotation=0, ha="center")
+    for lbl in ax.get_xticklabels() + ax.get_yticklabels():
+        lbl.set_fontweight("bold")
+        lbl.set_color(BLUE)
 
     for spine in ax.spines.values():
         spine.set_edgecolor(GRID_MAJ)
 
-    ax.set_ylabel("Stars", color=BLUE, fontsize=8, fontfamily="DejaVu Sans")
-    ax.set_xlabel("Date",  color=BLUE, fontsize=8, fontfamily="DejaVu Sans")
+    ax.set_ylabel("Stars", color=BLUE, fontsize=8,
+                  fontfamily="DejaVu Sans", fontweight="bold")
+    ax.set_xlabel(x_lbl,   color=BLUE, fontsize=8,
+                  fontfamily="DejaVu Sans", fontweight="bold")
     ax.set_title(
         f"{owner} / {name} · Star History",
         color=BLUE, fontsize=10, fontweight="normal",
