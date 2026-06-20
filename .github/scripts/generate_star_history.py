@@ -87,18 +87,19 @@ def generate(dates, repo, out):
     y31 = np.interp(x31, date_nums, counts)
     ax.scatter(mdates.num2date(x31), y31, color=BLUE, s=30, zorder=4, linewidths=0)
 
-    # ---------- MARGINESY, ŻEBY KROPKI NIE BYŁY UCINANE ----------
+    # ---------- MARGINESY (zapobieganie przycinaniu kropek) ----------
+    # Lewy i prawy margines 2%, górny 5%, dolny zapas -0.5
     ax.margins(x=0.02, y=0.05)
-    ax.set_ylim(bottom=-0.5)   # zapas na dole
+    ax.set_ylim(bottom=-0.5)   # dodatkowy zapas na dole
 
-    # Oś X – ustawiamy zakres ręcznie (bez marginesu po prawej)
-    ax.set_xlim(x_start, x_end)
+    # Oś X – zakres z marginesami (bez zbędnej przerwy z prawej)
+    x_pad = (x_end - x_start) * 0.02
+    ax.set_xlim(x_start - x_pad, x_end + x_pad)
 
     # Y: 8 linii, 0 na dole, ładny maksymalny zakres
     NUM_Y_LINES = 8
     nice_max = max(math.ceil(max(counts) / (NUM_Y_LINES - 1)) * (NUM_Y_LINES - 1), NUM_Y_LINES - 1)
     ax.set_ylim(0, nice_max)
-    ax.set_yticks(np.linspace(0, nice_max, NUM_Y_LINES))
 
     # ---------- SIATKA (kropkowana, nowy kolor) ----------
     ax.set_axisbelow(True)
