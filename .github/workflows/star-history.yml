@@ -2,7 +2,7 @@ name: Generate Star History
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # daily at midnight UTC
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests matplotlib
+        run: pip install requests matplotlib numpy
 
       - name: Generate SVG
         env:
@@ -27,11 +27,7 @@ jobs:
           REPO: ${{ github.repository }}
         run: python .github/scripts/generate_star_history.py
 
-      - name: Commit SVG
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase
-          git add assets/star-history.svg
-          git diff --cached --quiet || git commit -m "chore: update star history chart"
-          git push
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update star history chart"
+          file_pattern: assets/star-history.svg
