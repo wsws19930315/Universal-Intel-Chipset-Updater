@@ -1,8 +1,8 @@
 ## INF Selection and Functional Equivalence in Windows Driver Model
 
 ### Terminology
+
 - **INF**: declarative installation file defining device matching and installation rules
-  (INF file)
 - **Driver package**: complete driver bundle including INF, binaries (.sys/.dll), and catalog files
 - **Driver selection**: process by which Windows selects a driver package based on matching and policy rules
 
@@ -28,11 +28,11 @@ Two INF files with different versions (e.g. 10.1.1.38 vs 10.1.1.44) may still be
 
 - They define identical HWID and Compatible ID coverage
 - They produce the same device binding outcome
-- They do not change installation behavior or system configuration
+- They do not change installation behavior or device configuration
 
 In such cases:
 
-> Windows does not perform a driver package upgrade or downgrade, even if a higher INF version is available.
+> Windows does not treat INF version differences as a driver selection criterion.
 
 ---
 
@@ -58,33 +58,55 @@ INF version is primarily:
 The INF-defined device class (Class / ClassGuid):
 
 - is used for device categorization
-- influences how compatible drivers are grouped
-- is part of the matching context
+- influences grouping of compatible drivers
+- is part of matching context
 
 However:
 
-> It is NOT a standalone ranking factor in driver selection.
+> It is not a standalone ranking factor in driver selection.
 
 ---
 
-## Why Windows does not replace drivers
+## Why drivers may change during OS upgrade
 
-Windows installs or replaces a driver package only when there is a **state change**, meaning:
+During Windows feature updates or clean installation, driver replacement may occur due to:
 
-- a better HWID or Compatible ID match exists
-- a different driver is required for correct binding
-- system compatibility or policy conditions change
-- a higher-ranked match is available based on selection logic
+- driver migration policies
+- inbox driver prioritization
+- compatibility fallback rules
+- system baseline enforcement
 
-If two INF files produce the same system state, they are treated as interchangeable.
+This behavior is part of:
+
+:contentReference[oaicite:0]{index=0}
+
+and is separate from runtime driver selection.
+
+---
+
+## Runtime vs OS upgrade behavior
+
+### Windows Update (runtime)
+- Selects drivers based on matching and policy
+- Does not perform version-based upgrades or downgrades
+- Preserves existing working driver state if equivalent
+
+### Windows Setup (OS upgrade)
+- May replace drivers during migration
+- May prefer inbox or baseline drivers
+- May change driver state for compatibility reasons
+
+These are different decision systems.
 
 ---
 
 ## Conclusion
 
-Windows Update installs driver packages based on **matching logic and system state changes**, not INF version ordering.
+Windows Update installs driver packages based on matching logic and system state changes, not INF version ordering.
 
 If two INF packages are functionally equivalent in a given hardware context, they are treated as interchangeable regardless of version differences.
+
+Driver replacement may still occur during OS upgrades due to migration and baseline policies, which is a separate mechanism from Windows Update selection logic.
 
 Author: Marcin Grygiel aka FirstEver ([LinkedIn](https://www.linkedin.com/in/marcin-grygiel))
 
