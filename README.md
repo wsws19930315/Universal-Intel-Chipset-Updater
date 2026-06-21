@@ -514,6 +514,8 @@ universal-intel-chipset-device-updater
 - [BEHIND-THE-PROJECT_PL.md](docs/BEHIND-THE-PROJECT_PL_2025.md) - Project background (Polish)
 - [HOW-TO-VERIFY-INF_EN_2026.md](docs/HOW-TO-VERIFY-INF_EN_2026.md) - Manual INF version verification guide (English)
 - [HOW-TO-VERIFY-INF_PL_2026.md](docs/HOW-TO-VERIFY-INF_PL_2026.md) - Manual INF version verification guide (Polish)
+- [INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md) - INF Selection and SetupAPI Driver Ranking Model (English)
+- [INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md) - INF Selection and SetupAPI Driver Ranking Model (Polish)
 - [MDM-DEPLOYMENT-GUIDE_EN_2026.md](docs/MDM-DEPLOYMENT-GUIDE_EN_2026.md) - Deploying the Tool via MDM (English)
 - [MDM-DEPLOYMENT-GUIDE_PL_2026.md](docs/MDM-DEPLOYMENT-GUIDE_PL_2026.md) - Deploying the Tool via MDM (Polish)
 - [NEW-RELEASE-GUIDE_EN_2026.md](docs/NEW-RELEASE-GUIDE_EN_2026.md) - New Release Guide (English)
