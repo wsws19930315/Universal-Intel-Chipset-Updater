@@ -10,7 +10,7 @@
  device recognition across both legacy and modern Windows installations.
 
  If this tool saved you time, improved device identification, or helped
- keep older hardware operational, please consider supporting development.
+ keep older hardware updated, please consider supporting development.
 
 [Cyan]
 [Cyan] SUPPORTERS
@@ -30,9 +30,9 @@
 [Green] - Buy Me a Coffee:[Yellow] tinyurl.com/fet-coffee[Gray] - press [Black,Gray][C][Gray,Black] key
 [Green] - GitHub Sponsors:[Yellow] tinyurl.com/fet-github[Gray] - press [Black,Gray][G][Gray,Black] key
 
-[Magenta]
-[Magenta] PROJECT IMPACT
-[Magenta] ==============
+[Cyan]
+[Cyan] PROJECT IMPACT
+[Cyan] ==============
 
 [Green] - 65,000+ downloads worldwide
 [Green] - 100,000+ Intel hardware IDs supported
@@ -52,4 +52,4 @@
  let's discuss how I can help.
 
 [Green] - Business Contact:[Yellow] firstever.tech/contact[Gray] - press [Black,Gray][F][Gray,Black] key
-[Green] - LinkedIn Profile:[Yellow] linkedin.com/in/marcin-grygiel[Gray] - press [Black,Gray][L][Gray,Black] key
+[Green] - LinkedIn Profile:[Yellow] tinyurl.com/fet-linked[Gray] - press [Black,Gray][L][Gray,Black] key
