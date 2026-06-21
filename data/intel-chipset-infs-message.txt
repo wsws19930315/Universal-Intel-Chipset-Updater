@@ -12,6 +12,19 @@
  If this tool saved you time, improved device identification, or helped
  keep older hardware operational, please consider supporting development.
 
+[Magenta]
+[Magenta] SUPPORTERS
+[Magenta] ==========
+
+ If you are a company or IT organization using this tool in production
+ environments, you can support development and optionally have your
+ company listed in this section as a supporter.
+
+ This can include:
+ - Company name mention
+ - Small logo (if applicable in future builds)
+ - Optional acknowledgment in releases / credits screen
+
 [Green] - Become a Patron:[Yellow] tinyurl.com/fet-patron[Gray] - press [Black,Gray][T][Gray,Black] key
 [Green] - PayPal Donation:[Yellow] tinyurl.com/fet-paypal[Gray] - press [Black,Gray][P][Gray,Black] key
 [Green] - Buy Me a Coffee:[Yellow] tinyurl.com/fet-coffee[Gray] - press [Black,Gray][C][Gray,Black] key
@@ -38,11 +51,5 @@
  device management, or unsupported hardware environments,
  let's discuss how I can help.
 
-[Green] - Connect with me:[Yellow] linkedin.com/in/marcin-grygiel[Gray] - press [Black,Gray][L][Gray,Black] key
- 
- 
- 
- 
- 
- 
- 
+[Green] - Business Contact:[Yellow] firstever.tech/contact[Gray] - press [Black,Gray][F][Gray,Black] key
+[Green] - LinkedIn Profile:[Yellow] linkedin.com/in/marcin-grygiel[Gray] - press [Black,Gray][L][Gray,Black] key
