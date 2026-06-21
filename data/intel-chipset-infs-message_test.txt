@@ -1,46 +1,41 @@
-[Gray]+-------------------------------------------------------------------------+
-[Gray]|                                                                         |
-[Gray]|  [Cyan]--- THIS PROJECT ---[Gray]                                                   |
-[Gray]|                                                                         |
-[Gray]|  Free & open-source. Developed solely by me.                            |
-[Gray]|  Database: 100,000+ entries - not even Intel has this.                  |
-[Gray]|                                                                         |
-[Gray]|-------------------------------------------------------------------------|
-[Gray]|                                                                         |
-[Gray]|  [Yellow]--- BECOME A PATRON ---[Gray]                                                |
-[Gray]|                                                                         |
-[Gray]|  [Yellow]- Support & get your name featured here.[Gray]                               |
-[Gray]|  [Yellow]- Even free followers are welcome![Gray]                                     |
-[Gray]|                                                                         |
-[Gray]|  [Green]- Patreon: [Yellow]patreon.com/FirstEver[Green] - press [R][Gray]                           |
-[Gray]|                                                                         |
-[Gray]|-------------------------------------------------------------------------|
-[Gray]|                                                                         |
-[Gray]|  [Cyan]--- SUPPORTERS ---[Gray]                                                     |
-[Gray]|                                                                         |
-[Gray]|  Adrian S.     | Barbara K.    | Charles M.    | Dorota W.              |
-[Gray]|  Edward P.     | Fiona J.      | Grzegorz B.   | Hanna L.               |
-[Gray]|  Ireneusz R.   | Janusz C.     | Katarzyna G.  | Lukasz T.              |
-[Gray]|  Magdalena N.  | Norbert S.    | Olga Z.       | Pawel D.               |
-[Gray]|  Radoslaw M.   | Sandra F.     | Tomasz H.     | Urszula A.             |
-[Gray]|                                                                         |
-[Gray]|-------------------------------------------------------------------------|
-[Gray]|                                                                         |
-[Gray]|  [Cyan]--- SPONSOR THIS PROJECT ---[Gray]                                           |
-[Gray]|                                                                         |
-[Gray]|  - Want to place your ad here? Join as Corporate Sponsor.               |
-[Gray]|                                                                         |
-[Gray]|  [Yellow]- Your company - www.example.com - "Your slogan"[Gray]                       |
-[Gray]|                                                                         |
-[Gray]|-------------------------------------------------------------------------|
-[Gray]|                                                                         |
-[Gray]|  [Cyan]--- OTHER SUPPORT ---[Gray]                                                  |
-[Gray]|                                                                         |
-[Gray]|  [Green]- PayPal: [Yellow]tinyurl.com/fet-paypal[Green] - press [P][Gray]                           |
-[Gray]|  [Green]- Coffee: [Yellow]tinyurl.com/fet-coffee[Green] - press [C][Gray]                           |
-[Gray]|  [Green]- GitHub: [Yellow]tinyurl.com/fet-github[Green] - press [G][Gray]                           |
-[Gray]|                                                                         |
-[Gray]|                                                                         |
-[Gray]|  If this helped you: Star it on GitHub & share with colleagues.         |
-[Gray]|                                                                         |
-[Gray]+-------------------------------------------------------------------------+
+[Magenta]
+[Magenta] SUPPORT DEVELOPMENT
+[Magenta] ===================
+
+Universal Intel Chipset Device Updater provides automated driver
+detection and installation for thousands of Intel platforms,
+including many systems no longer actively maintained by OEM vendors.
+
+The driver database is continuously updated to ensure compatibility
+with both legacy and modern Windows installations.
+
+If this tool saved you time, solved a driver issue, or helped keep
+older hardware operational, please consider supporting development.
+
+[Green] - PayPal Donation:[Yellow] tinyurl.com/fet-paypal[Gray] - press [Black,Gray][P][Gray,Black] key
+[Green] - Buy Me a Coffee:[Yellow] tinyurl.com/fet-coffee[Gray] - press [Black,Gray][C][Gray,Black] key
+[Green] - GitHub Sponsors:[Yellow] tinyurl.com/fet-github[Gray] - press [Black,Gray][G][Gray,Black] key
+[Green] - Patronite:[Yellow] patronite.pl/FirstEverTech[Gray] - press [Black,Gray][T][Gray,Black] key
+
+[Magenta]
+[Magenta] PROJECT IMPACT
+[Magenta] ==============
+
+[Green] - 65,000+ downloads worldwide
+[Green] - 100,000+ Intel hardware IDs supported
+[Green] - Open-source and free to use
+[Green] - Continuously maintained driver database
+
+[Magenta]
+[Magenta] CAREER OPPORTUNITY
+[Magenta] ==================
+
+I specialize in Windows deployment, driver automation, hardware
+compatibility, Microsoft technologies, infrastructure analysis,
+and custom IT tooling.
+
+If your organization faces challenges with automation, deployment,
+device management, or unsupported hardware environments,
+let's discuss how I can help.
+
+[Green] - Connect with me:[Yellow] linkedin.com/in/marcin-grygiel[Gray] - press [Black,Gray][L][Gray,Black] key
