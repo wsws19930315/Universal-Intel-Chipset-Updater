@@ -1,112 +1,121 @@
-## INF Selection and Functional Equivalence in Windows Driver Model
+## INF Selection and Driver Ranking Model in Windows (v2.0)
 
 ### Terminology
 
-- **INF**: declarative installation file defining device matching and installation rules
-- **Driver package**: complete driver bundle including INF, binaries (.sys/.dll), and catalog files
-- **Driver selection**: process by which Windows selects a driver package based on matching and policy rules
+- **INF**: declarative file defining device matching and installation rules
+- **Driver package**: complete driver bundle including INF, binaries (.sys/.dll), and catalog
+- **Driver selection**: process of selecting a driver package based on SetupAPI ranking
 
 ---
 
 ## Overview
 
-The Windows Driver Model (SetupAPI + Windows Update) does not use INF version numbers as a primary decision factor for driver installation or upgrades.
+The Windows driver selection system (SetupAPI + Windows Update) does not rely on INF version as a primary decision factor.
 
-Instead, driver package selection is based on:
+Instead, selection is based on a multi-layer ranking model:
 
-- Hardware ID (HWID) matching
-- Compatible ID matching
+- Hardware ID (HWID) match strength
+- Compatible ID match strength
+- Driver feature set (INF capabilities and installation sections)
 - Driver signing and trust level (WHQL / Microsoft / OEM)
 - Driver source policy (inbox, OEM, Windows Update)
-- System compatibility constraints
 
 ---
 
-## Key concept: functional equivalence of INF files
+## Driver ranking model (correct structure)
 
-Two INF files with different versions (e.g. 10.1.1.38 vs 10.1.1.44) may still be treated as **functionally equivalent** if:
+Windows driver selection uses a structured ranking system:
 
-- They define identical HWID and Compatible ID coverage
-- They produce the same device binding outcome
-- They do not change installation behavior or device configuration
+### 1. Match strength layer (primary)
+- Exact HWID match
+- Compatible ID match
+- Partial / generic match
+
+### 2. Feature / capability layer
+- INF-defined installation behavior
+- supported OS / architecture sections
+- conditional install logic
+
+### 3. Signature / trust layer
+- WHQL certification
+- Microsoft-signed vs OEM-signed drivers
+- policy enforcement level
+
+### 4. Tie-break layer
+When all above factors are equal:
+
+- DriverVer (date + version) may act as a tie-breaker
+
+---
+
+## Important clarification: DriverVer role
+
+DriverVer is NOT a primary ranking factor.
+
+It is only used when:
+
+- HWID match score is identical
+- feature score is identical
+- signature level is identical
+
+In that case:
+
+> newer DriverVer may be preferred as a tie-breaker
+
+---
+
+## INF functional equivalence
+
+Two INF files (e.g. 10.1.1.38 vs 10.1.1.44) may still be functionally equivalent if:
+
+- they define identical HWID coverage
+- they produce identical device binding results
+- they do not change installation behavior
 
 In such cases:
 
-> Windows does not treat INF version differences as a driver selection criterion.
+> no upgrade or downgrade occurs unless ranking conditions differ
 
 ---
 
-## Important implication
+## INF version vs decision logic
 
-A higher INF version does not imply:
+INF version number:
 
-- better hardware support
-- improved performance
-- higher installation priority
-- preference in Windows Update selection
-
-INF version is primarily:
-
-- a release metadata field
-- a tracking and packaging identifier
-- not part of the driver selection decision logic
-
----
-
-## Role of INF Class (clarification)
-
-The INF-defined device class (Class / ClassGuid):
-
-- is used for device categorization
-- influences grouping of compatible drivers
-- is part of matching context
+- is metadata
+- is not part of primary ranking logic
+- does not define compatibility
+- does not override match strength
 
 However:
 
-> It is not a standalone ranking factor in driver selection.
+> DriverVer date/version can influence final selection only in tie-break scenarios
 
 ---
 
-## Why drivers may change during OS upgrade
+## OS upgrade vs runtime behavior
 
-During Windows feature updates or clean installation, driver replacement may occur due to:
-
-- driver migration policies
-- inbox driver prioritization
-- compatibility fallback rules
-- system baseline enforcement
-
-This behavior is part of:
-
-:contentReference[oaicite:0]{index=0}
-
-and is separate from runtime driver selection.
-
----
-
-## Runtime vs OS upgrade behavior
-
-### Windows Update (runtime)
-- Selects drivers based on matching and policy
-- Does not perform version-based upgrades or downgrades
-- Preserves existing working driver state if equivalent
+### Windows Update (runtime system)
+- fully ranking-driven
+- DriverVer only used in tie-break cases
+- preserves stable driver state if no better match exists
 
 ### Windows Setup (OS upgrade)
-- May replace drivers during migration
-- May prefer inbox or baseline drivers
-- May change driver state for compatibility reasons
+- may apply driver migration policies
+- may replace drivers with inbox baseline drivers
+- may enforce compatibility fallback rules
 
-These are different decision systems.
+These are separate decision systems.
 
 ---
 
 ## Conclusion
 
-Windows Update installs driver packages based on matching logic and system state changes, not INF version ordering.
+Windows driver selection is primarily based on matching strength, feature capabilities, and signing trust.
 
-If two INF packages are functionally equivalent in a given hardware context, they are treated as interchangeable regardless of version differences.
+DriverVer (date/version) is only used as a secondary tie-break factor when all other ranking dimensions are equal.
 
-Driver replacement may still occur during OS upgrades due to migration and baseline policies, which is a separate mechanism from Windows Update selection logic.
+INF version itself is not a primary decision factor, but it is not entirely irrelevant in strict tie-break conditions.
 
 Author: Marcin Grygiel aka FirstEver ([LinkedIn](https://www.linkedin.com/in/marcin-grygiel))
 
