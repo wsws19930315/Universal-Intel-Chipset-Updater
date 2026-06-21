@@ -1,110 +1,104 @@
-## Model wyboru INF i równoważności funkcjonalnej w sterownikach Windows
+## Model wyboru INF i rankingu sterowników SetupAPI
 
 ### Terminologia
 
-- **INF**: deklaracyjny plik instalacyjny definiujący dopasowanie urządzeń i reguły instalacji
-- **Pakiet sterownika (driver package)**: kompletny zestaw sterownika obejmujący INF, pliki binarne (.sys/.dll) oraz katalog podpisów
-- **Wybór sterownika**: proces, w którym Windows wybiera pakiet sterownika na podstawie dopasowania i polityk systemowych
+- **INF**: deklaracyjny plik sterownika
+- **Pakiet sterownika**: INF + pliki binarne + katalog podpisów
+- **Wybór sterownika**: proces rankingu SetupAPI
 
 ---
 
 ## Przegląd
 
-Model sterowników Windows (SetupAPI + Windows Update) nie używa numerów wersji INF jako głównego kryterium instalacji ani aktualizacji sterownika.
+System Windows wykorzystuje SetupAPI do wieloczynnikowego rankingu sterowników.
 
-Zamiast tego wybór pakietu sterownika opiera się na:
-
-- dopasowaniu Hardware ID (HWID)
-- dopasowaniu Compatible ID
-- podpisie cyfrowym i poziomie zaufania (WHQL / Microsoft / OEM)
-- polityce źródła sterownika (inbox, OEM, Windows Update)
-- ograniczeniach zgodności systemowej
+Numer wersji INF nie jest częścią logiki wyboru.
 
 ---
 
-## Kluczowe pojęcie: równoważność funkcjonalna INF
+## Potwierdzone elementy rankingu SetupAPI
 
-Dwa pliki INF o różnych wersjach (np. 10.1.1.38 vs 10.1.1.44) mogą być traktowane jako **funkcjonalnie równoważne**, jeśli:
-
-- definiują identyczne pokrycie HWID i Compatible ID
-- prowadzą do identycznego wyniku bindowania urządzenia
-- nie zmieniają zachowania instalacji ani konfiguracji systemu
-
-W takim przypadku:
-
-> Windows nie traktuje różnicy wersji INF jako kryterium wyboru sterownika.
+### 1. Signature score (najwyższy priorytet)
+- WHQL / Microsoft / OEM
+- określa poziom zaufania i kwalifikację
 
 ---
 
-## Ważna implikacja
+### 2. Scoring funkcjonalny INF (częściowo udokumentowany)
 
-Wyższa wersja INF nie oznacza:
+Niektóre INF mogą zawierać parametry typu FeatureScore lub podobne mechanizmy wpływające na priorytet.
 
-- lepszego wsparcia sprzętowego
-- lepszej wydajności
-- wyższego priorytetu instalacji
-- preferencji w Windows Update
+Jednak:
 
-Numer wersji INF pełni głównie rolę:
+- dokładna lokalizacja i sposób przetwarzania nie są w pełni publicznie udokumentowane
+- zachowanie może zależeć od implementacji SetupAPI
 
-- metadanych wydania
-- identyfikatora pakietu
-- elementu dokumentacyjnego, nie decyzyjnego
+Traktowane jako sygnał priorytetowy.
 
 ---
 
-## Rola klasy INF (doprecyzowanie)
-
-Klasa urządzenia definiowana w INF (Class / ClassGuid):
-
-- służy do kategoryzacji urządzeń
-- wpływa na grupowanie kompatybilnych sterowników
-- jest częścią kontekstu dopasowania
-
-Nie stanowi jednak niezależnego poziomu rankingu w procesie wyboru sterownika.
+### 3. Identifier score
+- HWID
+- Compatible ID
+- siła dopasowania (exact > compatible > generic)
 
 ---
 
-## Dlaczego sterowniki mogą się zmieniać podczas aktualizacji systemu
-
-Podczas aktualizacji systemu Windows lub czystej instalacji może dojść do zmiany sterownika z powodu:
-
-- polityki migracji sterowników
-- priorytetu sterowników inbox
-- reguł zgodności systemowej
-- wymuszenia bazowego zestawu sterowników
-
-Jest to część procesu:
-
-:contentReference[oaicite:1]{index=1}
-
-i działa niezależnie od Windows Update.
+### 4. DriverVer (tie-break)
+- data DriverVer
+- następnie numer wersji
+- używany tylko przy remisie
 
 ---
 
-## Różnica: Windows Update vs Windows Setup
+## Wersja INF a logika systemu
 
-### Windows Update (czas działania systemu)
-- wybiera sterowniki na podstawie dopasowania i polityki
-- nie stosuje logiki wersji jako kryterium
-- zachowuje istniejący stan, jeśli jest równoważny
+Numer wersji INF:
 
-### Windows Setup (aktualizacja systemu)
-- może zastąpić sterowniki podczas migracji
-- może preferować sterowniki inbox lub bazowe
-- może zmienić stan sterownika ze względów zgodności
+- ma charakter metadanych
+- nie wpływa na ranking SetupAPI
+- nie wpływa na dopasowanie sprzętu
 
-Są to dwa różne mechanizmy decyzyjne.
+Jedynym elementem wersyjnym używanym w decyzji jest DriverVer (tylko tie-break).
+
+---
+
+## Równoważność funkcjonalna (konstrukt inżynierski)
+
+„Równoważność funkcjonalna” jest abstrakcją inżynierską oznaczającą:
+
+- identyczne HWID/CompatID
+- identyczny wynik bindowania
+- identyczny stan systemu
+
+Nie jest to termin oficjalny Windows Driver Framework.
+
+---
+
+## Zachowanie systemu
+
+### Windows Update (runtime)
+- stosuje model SetupAPI
+- DriverVer tylko jako tie-break
+
+### Windows Setup (upgrade systemu)
+- może zmieniać sterowniki
+- stosuje polityki inbox i migracji
 
 ---
 
 ## Podsumowanie
 
-Windows Update instaluje pakiety sterowników na podstawie logiki dopasowania i zmiany stanu systemu, a nie numeru wersji INF.
+Ranking sterowników Windows opiera się na wieloczynnikowym modelu SetupAPI:
 
-Jeżeli dwa pakiety INF są funkcjonalnie równoważne w danym kontekście sprzętowym, są traktowane jako zamienne niezależnie od różnic w wersji.
+1. Signature score
+2. Identifier score (HWID/CompatID)
+3. Scoring funkcjonalny INF (częściowo nieudokumentowany)
+4. DriverVer (tie-break)
 
-Zmiana sterownika może jednak nastąpić podczas aktualizacji systemu, co wynika z polityki migracji i warstw bazowych Windows Setup, a nie z Windows Update.
+Numer wersji INF nie jest częścią systemu rankingu.
+
+Część mechanizmów scoringu INF-level nie jest w pełni publicznie opisana i powinna być traktowana jako zależna od implementacji.
 
 Autor: Marcin Grygiel aka FirstEver ([LinkedIn](https://www.linkedin.com/in/marcin-grygiel))
 
