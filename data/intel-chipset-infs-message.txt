@@ -1,12 +1,11 @@
-[Gray]
-+-------------------------------------------------------------------------+
+[Gray]+-------------------------------------------------------------------------+
 [Gray]|                                                                         |
 [Gray]|  [Cyan]--- THIS PROJECT ---[Gray]                                                   |
 [Gray]|                                                                         |
 [Gray]|  Free & open-source. Developed solely by me.                            |
 [Gray]|  Database: 100,000+ entries - not even Intel has this.                  |
 [Gray]|                                                                         |
-+-------------------------------------------------------------------------+
+[Gray]|-------------------------------------------------------------------------|
 [Gray]|                                                                         |
 [Gray]|  [Yellow]--- BECOME A PATRON ---[Gray]                                                |
 [Gray]|                                                                         |
@@ -14,7 +13,7 @@
 [Gray]|  [Yellow]- Even free followers are welcome![Gray]                                     |
 [Gray]|  [White]- PATREON: [Yellow]patreon.com/FirstEver[Green] - press [R][Gray]                          |
 [Gray]|                                                                         |
-+-------------------------------------------------------------------------+
+[Gray]|-------------------------------------------------------------------------|
 [Gray]|                                                                         |
 [Gray]|  [Cyan]--- SUPPORTERS ---[Gray]                                                     |
 [Gray]|                                                                         |
@@ -24,14 +23,14 @@
 [Gray]|  Magdalena N.  | Norbert S.    | Olga Z.       | Pawel D.               |
 [Gray]|  Radoslaw M.   | Sandra F.     | Tomasz H.     | Urszula A.             |
 [Gray]|                                                                         |
-+-------------------------------------------------------------------------+
+[Gray]|-------------------------------------------------------------------------|
 [Gray]|                                                                         |
 [Gray]|  [Cyan]--- SPONSOR THIS PROJECT ---[Gray]                                           |
 [Gray]|                                                                         |
 [Gray]|  - Want to place your ad here? Join as Corporate Sponsor.               |
 [Gray]|  [Yellow]- Your company - www.example.com - "Your slogan"[Gray]                       |
 [Gray]|                                                                         |
-+-------------------------------------------------------------------------+
+[Gray]|-------------------------------------------------------------------------|
 [Gray]|                                                                         |
 [Gray]|  [Cyan]--- OTHER SUPPORT ---[Gray]                                                  |
 [Gray]|                                                                         |
