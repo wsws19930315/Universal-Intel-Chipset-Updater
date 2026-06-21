@@ -1,15 +1,15 @@
 [Gray]
 +-------------------------------------------------------------------------+
 [Gray]|                                                                         |
-[Gray]|  [Cyan]--- THIS PROJECT ---[Gray]                                                   |
+[Gray]|  [Cyan]--- THIS PROJECT ---[Gray]                                                     |
 [Gray]|                                                                         |
 [Gray]|  Free & open-source. Developed solely by me.                            |
 [Gray]|  Database: 100,000+ entries - not even Intel has this.                  |
 [Gray]|                                                                         |
-[Gray]|  [Black,White]--- BECOME A PATRON ---[Gray,Black]                                                |
-[Gray]|  [Black,White]- Support & get your name featured here.[Gray,Black]                               |
-[Gray]|  [Black,White]- Even free followers are welcome![Gray,Black]                                     |
-[Gray]|  [Black,White]- [Blue,White]patreon.com/FirstEver[Black,White] - press [R][Gray,Black]                                    |
+[Gray]|  [Yellow]--- BECOME A PATRON ---[Gray]                                                |
+[Gray]|  [Yellow]- Support & get your name featured here.[Gray]                               |
+[Gray]|  [Yellow]- Even free followers are welcome![Gray]                                     |
+[Gray]|  [Yellow]- [Cyan]patreon.com/FirstEver[Yellow] - press [R][Gray]                                       |
 [Gray]|                                                                         |
 [Gray]|  [Cyan]--- SUPPORTERS ---[Gray]                                                     |
 [Gray]|                                                                         |
@@ -26,9 +26,9 @@
 [Gray]|                                                                         |
 [Gray]|  [Cyan]--- OTHER SUPPORT ---[Gray]                                                  |
 [Gray]|                                                                         |
-[Gray]|  [Green]- PayPal: [Yellow]tinyurl.com/fet-paypal[Green] - press [P][Gray]                           |
-[Gray]|  [Green]- Coffee: [Yellow]tinyurl.com/fet-coffee[Green] - press [C][Gray]                           |
-[Gray]|  [Green]- GitHub: [Yellow]tinyurl.com/fet-github[Green] - press [G][Gray]                           |
+[Gray]|  [Green]- PayPal: [Yellow]tinyurl.com/fet-paypal[Green] - press [P][Gray]                              |
+[Gray]|  [Green]- Coffee: [Yellow]tinyurl.com/fet-coffee[Green] - press [C][Gray]                              |
+[Gray]|  [Green]- GitHub: [Yellow]tinyurl.com/fet-github[Green] - press [G][Gray]                              |
 [Gray]|                                                                         |
 [Gray]|  If this helped you: Star it on GitHub & share with colleagues.         |
 [Gray]|                                                                         |
