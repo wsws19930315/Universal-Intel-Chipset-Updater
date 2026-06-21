@@ -6,11 +6,15 @@
 [Gray]|  Free & open-source. Developed solely by me.                            |
 [Gray]|  Database: 100,000+ entries - not even Intel has this.                  |
 [Gray]|                                                                         |
++-------------------------------------------------------------------------+
+[Gray]|                                                                         |
 [Gray]|  [Yellow]--- BECOME A PATRON ---[Gray]                                                |
 [Gray]|                                                                         |
 [Gray]|  [Yellow]- Support & get your name featured here.[Gray]                               |
 [Gray]|  [Yellow]- Even free followers are welcome![Gray]                                     |
 [Gray]|  [Yellow]- Patreon.com/FirstEver[Yellow] - press [R][Gray]                                   |
+[Gray]|                                                                         |
++-------------------------------------------------------------------------+
 [Gray]|                                                                         |
 [Gray]|  [Cyan]--- SUPPORTERS ---[Gray]                                                     |
 [Gray]|                                                                         |
@@ -20,10 +24,14 @@
 [Gray]|  Magdalena N.  | Norbert S.    | Olga Z.       | Pawel D.               |
 [Gray]|  Radoslaw M.   | Sandra F.     | Tomasz H.     | Urszula A.             |
 [Gray]|                                                                         |
++-------------------------------------------------------------------------+
+[Gray]|                                                                         |
 [Gray]|  [Cyan]--- SPONSOR THIS PROJECT ---[Gray]                                           |
 [Gray]|                                                                         |
 [Gray]|  - Want to place your ad here? Join as Corporate Sponsor.               |
 [Gray]|  [Yellow]- Your company - www.example.com - "Your slogan"[Gray]                       |
+[Gray]|                                                                         |
++-------------------------------------------------------------------------+
 [Gray]|                                                                         |
 [Gray]|  [Cyan]--- OTHER SUPPORT ---[Gray]                                                  |
 [Gray]|                                                                         |
