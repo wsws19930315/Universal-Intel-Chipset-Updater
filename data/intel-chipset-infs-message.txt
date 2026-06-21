@@ -1,47 +1,43 @@
-[Cyan]
-[Cyan] --- THIS PROJECT ---
-[Cyan]
+[Yellow,Red]
+[Yellow,Red] === THIS PROJECT ===
+[Yellow,Red]
 
-[White] This tool is completely free and open-source. It is developed and
-[White] maintained solely by me, with a database of over[Green] 100,000+ entries[White]
-[White] - a resource that even[Yellow] Intel[White] does not provide.
+[White] Free & open-source. Developed solely by me.
+[White] Database: [Green]100,000+ entries[White] - not even [Yellow]Intel[White] has this.
 
-[Cyan]
-[Cyan] --- BECOME A PATRON ---
-[Cyan]
+[Yellow,Red]
+[Yellow,Red] === BECOME A PATRON ===
+[Yellow,Red]
 
-[Green] - Support this project regularly and get your name featured on this screen.
-[Green] - Even free followers are welcome!
-[Yellow] - https://patreon.com/FirstEverTech[Gray] - press [Black,Gray][R][Gray,Black] key
+[Green] - Support & get your name on this screen.
+[Green] - Free followers are welcome too!
+[Yellow] - patreon.com/FirstEverTech[Gray] - press [Black,Gray][R]
 
-[Cyan]
-[Cyan] --- THIS PROJECT IS SUPPORTED BY ---
-[Cyan]
+[Yellow,Red]
+[Yellow,Red] === SUPPORTERS ===
+[Yellow,Red]
 
-[Green] Adrian S.[Gray] | [Green] Barbara K.[Gray] | [Green] Charles M.[Gray] | [Green] Dorota W.
-[Green] Edward P.[Gray] | [Green] Fiona J.[Gray]   | [Green] Grzegorz B.[Gray] | [Green] Hanna L.
-[Green] Ireneusz R.[Gray]| [Green] Janusz C.[Gray]  | [Green] Katarzyna G.[Gray]| [Green] Lukasz T.
-[Green] Magdalena N.[Gray]| [Green] Norbert S.[Gray] | [Green] Olga Z.[Gray]    | [Green] Pawel D.
-[Green] Radoslaw M.[Gray]| [Green] Sandra F.[Gray]  | [Green] Tomasz H.[Gray]  | [Green] Urszula A.
+[Green, DarkGray] Adrian S.[Gray,DarkGray] | [Green, DarkGray] Barbara K.[Gray,DarkGray] | [Green, DarkGray] Charles M.[Gray,DarkGray] | [Green, DarkGray] Dorota W.
+[Green, DarkGray] Edward P.[Gray,DarkGray] | [Green, DarkGray] Fiona J.[Gray,DarkGray]   | [Green, DarkGray] Grzegorz B.[Gray,DarkGray] | [Green, DarkGray] Hanna L.
+[Green, DarkGray] Ireneusz R.[Gray,DarkGray]| [Green, DarkGray] Janusz C.[Gray,DarkGray]  | [Green, DarkGray] Katarzyna G.[Gray,DarkGray]| [Green, DarkGray] Lukasz T.
+[Green, DarkGray] Magdalena N.[Gray,DarkGray]| [Green, DarkGray] Norbert S.[Gray,DarkGray] | [Green, DarkGray] Olga Z.[Gray,DarkGray]    | [Green, DarkGray] Pawel D.
+[Green, DarkGray] Radoslaw M.[Gray,DarkGray]| [Green, DarkGray] Sandra F.[Gray,DarkGray]  | [Green, DarkGray] Tomasz H.[Gray,DarkGray]  | [Green, DarkGray] Urszula A.
 
-[Cyan]
-[Cyan] --- SPONSOR THIS PROJECT ---
-[Cyan]
+[Yellow,Red]
+[Yellow,Red] === SPONSOR THIS PROJECT ===
+[Yellow,Red]
 
-[Green] - Want to place your ad here? Join as a Corporate Sponsor on Patreon!
-[Yellow] - Company Name - www.company.com - "Your trusted IT partner"
+[Green] - Want to place your ad here? Join as a Corporate Sponsor.
+[Yellow] - Your company name - www.example.com - "Your slogan"
 
-[Cyan]
-[Cyan] --- OTHER SUPPORT OPTIONS ---
-[Cyan]
+[Yellow,Red]
+[Yellow,Red] === OTHER SUPPORT ===
+[Yellow,Red]
 
-[Green] - PayPal Donation:[Yellow] tinyurl.com/fet-paypal[Gray] - press [Black,Gray][P][Gray,Black] key
-[Green] - Buy Me a Coffee:[Yellow] tinyurl.com/fet-coffee[Gray] - press [Black,Gray][C][Gray,Black] key
-[Green] - GitHub Sponsors:[Yellow] tinyurl.com/fet-github[Gray] - press [Black,Gray][G][Gray,Black] key
+[Green] - PayPal:[Yellow] tinyurl.com/fet-paypal[Gray]  [Black,Gray][P]
+[Green] - Coffee:[Yellow] tinyurl.com/fet-coffee[Gray]  [Black,Gray][C]
+[Green] - GitHub:[Yellow] tinyurl.com/fet-github[Gray]  [Black,Gray][G]
 
-[Green] If this project helped you, please consider:
-[Green] - Giving it a STAR on GitHub
-[Green] - Sharing with friends and colleagues
-
-[Gray] Press [Black,Gray]R[Gray,Black]=Patreon, [Black,Gray]P[Gray,Black]=PayPal,
-[Gray] [Black,Gray]C[Gray,Black]=Coffee, [Black,Gray]G[Gray,Black]=GitHub, or any key to exit.
+[White] If this helped you, please:
+[Green] - Star it on GitHub
+[Green] - Share it with colleagues
