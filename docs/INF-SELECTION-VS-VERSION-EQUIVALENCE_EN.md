@@ -1,122 +1,107 @@
-## INF Selection and Driver Ranking Model in Windows (v2.0)
+## INF Selection and SetupAPI Driver Ranking Model
 
 ### Terminology
 
-- **INF**: declarative file defining device matching and installation rules
-- **Driver package**: complete driver bundle including INF, binaries (.sys/.dll), and catalog
-- **Driver selection**: process of selecting a driver package based on SetupAPI ranking
+- **INF**: declarative driver installation file
+- **Driver package**: INF + binaries + catalog
+- **Driver selection**: SetupAPI-based ranking process
 
 ---
 
 ## Overview
 
-The Windows driver selection system (SetupAPI + Windows Update) does not rely on INF version as a primary decision factor.
+Windows driver selection is performed by SetupAPI using a multi-factor ranking model.
 
-Instead, selection is based on a multi-layer ranking model:
-
-- Hardware ID (HWID) match strength
-- Compatible ID match strength
-- Driver feature set (INF capabilities and installation sections)
-- Driver signing and trust level (WHQL / Microsoft / OEM)
-- Driver source policy (inbox, OEM, Windows Update)
+INF version is not part of the ranking logic.
 
 ---
 
-## Driver ranking model (correct structure)
+## Confirmed SetupAPI ranking components
 
-Windows driver selection uses a structured ranking system:
-
-### 1. Match strength layer (primary)
-- Exact HWID match
-- Compatible ID match
-- Partial / generic match
-
-### 2. Feature / capability layer
-- INF-defined installation behavior
-- supported OS / architecture sections
-- conditional install logic
-
-### 3. Signature / trust layer
-- WHQL certification
-- Microsoft-signed vs OEM-signed drivers
-- policy enforcement level
-
-### 4. Tie-break layer
-When all above factors are equal:
-
-- DriverVer (date + version) may act as a tie-breaker
+### 1. Signature score (primary)
+- WHQL / Microsoft / OEM trust level
+- determines baseline eligibility and trust class
 
 ---
 
-## Important clarification: DriverVer role
+### 2. Feature-related scoring (INF-level attribute, partially specified)
 
-DriverVer is NOT a primary ranking factor.
-
-It is only used when:
-
-- HWID match score is identical
-- feature score is identical
-- signature level is identical
-
-In that case:
-
-> newer DriverVer may be preferred as a tie-breaker
-
----
-
-## INF functional equivalence
-
-Two INF files (e.g. 10.1.1.38 vs 10.1.1.44) may still be functionally equivalent if:
-
-- they define identical HWID coverage
-- they produce identical device binding results
-- they do not change installation behavior
-
-In such cases:
-
-> no upgrade or downgrade occurs unless ranking conditions differ
-
----
-
-## INF version vs decision logic
-
-INF version number:
-
-- is metadata
-- is not part of primary ranking logic
-- does not define compatibility
-- does not override match strength
+Some INF files may define a FeatureScore-like parameter within the INF metadata.
 
 However:
 
-> DriverVer date/version can influence final selection only in tie-break scenarios
+- exact placement and enforcement details are not fully documented publicly
+- behavior is implementation-dependent within SetupAPI
+
+It is treated as a priority hint within the driver selection process.
 
 ---
 
-## OS upgrade vs runtime behavior
+### 3. Identifier score
+- Hardware ID (HWID)
+- Compatible ID (CompatID)
+- match strength evaluation (exact > compatible > generic)
 
-### Windows Update (runtime system)
-- fully ranking-driven
-- DriverVer only used in tie-break cases
-- preserves stable driver state if no better match exists
+---
 
-### Windows Setup (OS upgrade)
-- may apply driver migration policies
-- may replace drivers with inbox baseline drivers
-- may enforce compatibility fallback rules
+### 4. DriverVer tie-breaker
+- DriverVer date
+- then version number
+- used only when all higher ranking factors are equal
 
-These are separate decision systems.
+---
+
+## INF version vs ranking logic
+
+INF version:
+
+- is metadata only
+- is not part of SetupAPI ranking
+- does not affect hardware matching decisions
+
+DriverVer is the only version-related element used in tie-break scenarios.
+
+---
+
+## Functional equivalence (engineering construct)
+
+"Functional equivalence" is an engineering abstraction meaning:
+
+- identical HWID/CompatID coverage
+- identical driver binding outcome
+- identical system state after installation
+
+It is not an official Windows Driver Framework term.
+
+---
+
+## Runtime vs OS upgrade behavior
+
+### Windows Update (runtime)
+- uses SetupAPI ranking model
+- applies multi-factor scoring
+- DriverVer used only as tie-breaker
+
+### Windows Setup (OS upgrade / migration)
+- may replace drivers due to:
+  - inbox baseline policy
+  - migration rules
+  - compatibility fallback logic
 
 ---
 
 ## Conclusion
 
-Windows driver selection is primarily based on matching strength, feature capabilities, and signing trust.
+Windows driver selection is based on SetupAPI multi-factor ranking:
 
-DriverVer (date/version) is only used as a secondary tie-break factor when all other ranking dimensions are equal.
+1. Signature score
+2. Identifier score (HWID/CompatID)
+3. Feature-related INF scoring (implementation-dependent)
+4. DriverVer (tie-break)
 
-INF version itself is not a primary decision factor, but it is not entirely irrelevant in strict tie-break conditions.
+INF version is not part of the ranking system.
 
+Some INF-level feature scoring behavior is not fully publicly specified and should be treated as implementation-dependent.
 Author: Marcin Grygiel aka FirstEver ([LinkedIn](https://www.linkedin.com/in/marcin-grygiel))
 
 ---
