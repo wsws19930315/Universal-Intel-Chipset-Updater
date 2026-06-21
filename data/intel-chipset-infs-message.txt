@@ -1,34 +1,34 @@
 +-------------------------------------------------------------------------+
-|                                                                             |
-|  --- THIS PROJECT ---                                                       |
-|                                                                             |
-|  Free & open-source. Developed solely by me.                               |
-|  Database: 100,000+ entries - not even Intel has this.                     |
-|                                                                             |
-|  --- BECOME A PATRON ---                                                   |
-|  - Support & get your name featured here.                                  |
-|  - Even free followers are welcome!                                        |
-|  - patreon.com/FirstEverTech - press [R]                                  |
-|                                                                             |
-|  --- SUPPORTERS ---                                                        |
-|                                                                             |
-|  Adrian S. | Barbara K. | Charles M. | Dorota W.                          |
-|  Edward P. | Fiona J.   | Grzegorz B. | Hanna L.                          |
-|  Ireneusz R.| Janusz C.  | Katarzyna G.| Lukasz T.                        |
-|  Magdalena N.| Norbert S. | Olga Z.    | Pawel D.                         |
-|  Radoslaw M.| Sandra F.  | Tomasz H.  | Urszula A.                        |
-|                                                                             |
-|  --- SPONSOR THIS PROJECT ---                                              |
-|                                                                             |
-|  - Want to place your ad here? Join as Corporate Sponsor.                  |
-|  - Your company - www.example.com - "Your slogan"                          |
-|                                                                             |
-|  --- OTHER SUPPORT ---                                                     |
-|                                                                             |
-|  - PayPal: tinyurl.com/fet-paypal - press [P]                             |
-|  - Coffee: tinyurl.com/fet-coffee - press [C]                             |
-|  - GitHub: tinyurl.com/fet-github - press [G]                             |
-|                                                                             |
-|  If this helped you: Star it on GitHub & share with colleagues.            |
-|                                                                             |
+|                                                                         |
+|  --- THIS PROJECT ---                                                   |
+|                                                                         |
+|  Free & open-source. Developed solely by me.                           |
+|  Database: 100,000+ entries - not even Intel has this.                 |
+|                                                                         |
+|  --- BECOME A PATRON ---                                               |
+|  - Support & get your name featured here.                              |
+|  - Even free followers are welcome!                                    |
+|  - patreon.com/FirstEverTech - press [R]                              |
+|                                                                         |
+|  --- SUPPORTERS ---                                                    |
+|                                                                         |
+|  Adrian S. | Barbara K. | Charles M. | Dorota W.                      |
+|  Edward P. | Fiona J.   | Grzegorz B. | Hanna L.                      |
+|  Ireneusz R.| Janusz C.  | Katarzyna G.| Lukasz T.                    |
+|  Magdalena N.| Norbert S. | Olga Z.    | Pawel D.                     |
+|  Radoslaw M.| Sandra F.  | Tomasz H.  | Urszula A.                    |
+|                                                                         |
+|  --- SPONSOR THIS PROJECT ---                                          |
+|                                                                         |
+|  - Want to place your ad here? Join as Corporate Sponsor.              |
+|  - Your company - www.example.com - "Your slogan"                      |
+|                                                                         |
+|  --- OTHER SUPPORT ---                                                 |
+|                                                                         |
+|  - PayPal: tinyurl.com/fet-paypal - press [P]                         |
+|  - Coffee: tinyurl.com/fet-coffee - press [C]                         |
+|  - GitHub: tinyurl.com/fet-github - press [G]                         |
+|                                                                         |
+|  If this helped you: Star it on GitHub & share with colleagues.        |
+|                                                                         |
 +-------------------------------------------------------------------------+
