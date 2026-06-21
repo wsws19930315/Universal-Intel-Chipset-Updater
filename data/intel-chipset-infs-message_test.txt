@@ -2,20 +2,20 @@
 [Magenta] SUPPORT DEVELOPMENT
 [Magenta] ===================
 
-Universal Intel Chipset Device Updater provides automated driver
-detection and installation for thousands of Intel platforms,
+Universal Intel Chipset Device Updater provides automated hardware
+detection and Intel INF deployment for thousands of Intel platforms,
 including many systems no longer actively maintained by OEM vendors.
 
-The driver database is continuously updated to ensure compatibility
-with both legacy and modern Windows installations.
+The hardware ID database is continuously updated to ensure accurate
+device recognition across both legacy and modern Windows installations.
 
-If this tool saved you time, solved a driver issue, or helped keep
-older hardware operational, please consider supporting development.
+If this tool saved you time, improved device identification, or helped
+keep older hardware operational, please consider supporting development.
 
+[Green] - Become a Patron:[Yellow] patronite.com/FirstEver[Gray] - press [Black,Gray][T][Gray,Black] key
 [Green] - PayPal Donation:[Yellow] tinyurl.com/fet-paypal[Gray] - press [Black,Gray][P][Gray,Black] key
 [Green] - Buy Me a Coffee:[Yellow] tinyurl.com/fet-coffee[Gray] - press [Black,Gray][C][Gray,Black] key
 [Green] - GitHub Sponsors:[Yellow] tinyurl.com/fet-github[Gray] - press [Black,Gray][G][Gray,Black] key
-[Green] - Patronite:[Yellow] patronite.pl/FirstEverTech[Gray] - press [Black,Gray][T][Gray,Black] key
 
 [Magenta]
 [Magenta] PROJECT IMPACT
@@ -24,7 +24,7 @@ older hardware operational, please consider supporting development.
 [Green] - 65,000+ downloads worldwide
 [Green] - 100,000+ Intel hardware IDs supported
 [Green] - Open-source and free to use
-[Green] - Continuously maintained driver database
+[Green] - Continuously maintained INF database
 
 [Magenta]
 [Magenta] CAREER OPPORTUNITY
