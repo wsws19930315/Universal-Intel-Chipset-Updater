@@ -43,8 +43,6 @@
 [Gray]|                                                                         |
 [Gray]|                                                                         |
 [Gray]|                                                                         |
-[Gray]|                                                                         |
-[Gray]|                                                                         |
 [Gray]|  If this helped you: Star it on GitHub & share with colleagues.         |
 [Gray]|                                                                         |
 [Gray]+-------------------------------------------------------------------------+
