@@ -12,7 +12,7 @@
 [Gray]|                                                                         |
 [Gray]|  [Yellow]- Support & get your name featured here.[Gray]                               |
 [Gray]|  [Yellow]- Even free followers are welcome![Gray]                                     |
-[Gray]|  [Yellow]- Patreon.com/FirstEver[Yellow] - press [R][Gray]                                   |
+[Gray]|  [White]- PATREON: [Yellow]patreon.com/FirstEver[Green] - press [R][Gray]                          |
 [Gray]|                                                                         |
 +-------------------------------------------------------------------------+
 [Gray]|                                                                         |
