@@ -29,6 +29,7 @@
 [Gray]|  [Cyan]--- SPONSOR THIS PROJECT ---[Gray]                                           |
 [Gray]|                                                                         |
 [Gray]|  - Want to place your ad here? Join as Corporate Sponsor.               |
+[Gray]|                                                                         |
 [Gray]|  [Yellow]- Your company - www.example.com - "Your slogan"[Gray]                       |
 [Gray]|                                                                         |
 [Gray]|-------------------------------------------------------------------------|
@@ -38,6 +39,11 @@
 [Gray]|  [Green]- PayPal: [Yellow]tinyurl.com/fet-paypal[Green] - press [P][Gray]                           |
 [Gray]|  [Green]- Coffee: [Yellow]tinyurl.com/fet-coffee[Green] - press [C][Gray]                           |
 [Gray]|  [Green]- GitHub: [Yellow]tinyurl.com/fet-github[Green] - press [G][Gray]                           |
+[Gray]|                                                                         |
+[Gray]|                                                                         |
+[Gray]|                                                                         |
+[Gray]|                                                                         |
+[Gray]|                                                                         |
 [Gray]|                                                                         |
 [Gray]|  If this helped you: Star it on GitHub & share with colleagues.         |
 [Gray]|                                                                         |
