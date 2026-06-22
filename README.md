@@ -54,6 +54,25 @@ For detailed documentation and guides, see:
 
 ---
 
+## 💖 Support This Project
+
+**Universal Intel Chipset Device Updater** is free and open-source — maintained by a single developer.  
+The hardware ID database requires constant updates, compatibility testing across hardware generations is ongoing, and new features are always in development.
+
+If this tool saved you time, improved device identification, or helped keep older hardware running — consider supporting development.
+
+[![Patreon](https://img.shields.io/badge/Patreon-Patron-F96854?style=for-the-badge&logo=patreon)](https://www.patreon.com/FirstEverTech)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Coffee-Donate-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![Ko-fi](https://img.shields.io/badge/Ko--fi-Donate-FF5E5B?style=for-the-badge&logo=kofi)](https://ko-fi.com/firstever)
+
+🎯 **[Follow on Patreon for free](https://www.patreon.com/FirstEverTech)** — stay updated on new releases and development progress.  
+
+## 🏢 Sponsors
+*No sponsors yet — [be the first and add your company ad!](https://www.patreon.com/FirstEverTech)*
+
+## ❤️ Supporters
+*No supporters yet — [be the first!](https://www.patreon.com/FirstEverTech)*
+
+---
+
 - Official threads on the following forums: **[TechPowerUp](https://www.techpowerup.com/forums/threads/tool-universal-intel-chipset-device-updater.346086/)**, **[Win-Raid](https://winraid.level1techs.com/t/tool-universal-intel-chipset-device-updater)**, **[Station-Drivers](https://www.station-drivers.com/index.php/en/forum/intel-chipsets-drivers/887-universal-intel-chipset-drivers-updater)**, **[ElevenForum](https://www.elevenforum.com/t/universal-intel-chipset-device-updater.41790)** and **[WinClub](https://winclub.pl/topic/49717-universal-intel-chipset-device-updater)**.
 - For transparency and additional verification, the project is listed on: **[MajorGeeks](https://www.majorgeeks.com/files/details/universal_intel_chipset_device_updater.html)**, **[Softpedia](https://www.softpedia.com/get/System/Universal-Intel-Chipset-Device-Updater.shtml)** and **[Instalki](https://www.instalki.pl/download/programy/sterowniki/plyty-glowne/intel/universal-intel-chipset-device-updater/)**.
 
@@ -811,36 +830,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <a id="author-and-contact"></a>
 ## 🧑‍💻 **24. Author & Contact**
 
-**Marcin Grygiel** aka FirstEver
-- 🌐 **Website**: [www.firstever.tech](https://www.firstever.tech)
-- 💼 **LinkedIn**: [Marcin Grygiel](https://www.linkedin.com/in/marcin-grygiel/)
-- 🔧 **GitHub**: [FirstEverTech](https://github.com/FirstEverTech)
-- 📧 **Contact**: [Contact Form](https://www.firstever.tech/contact)
-
-<img width="600" alt="Author Photo" title="Marcin Grygiel aka FirstEver and AI" src="https://github.com/user-attachments/assets/452c8553-5059-47c6-9ff9-d73443bb6c06" />
-
-[↑ Back to top](#top)
-
-<a id="support-this-project"></a>
-
-## 💖 25. Support This Project
-This project is maintained in my free time. Your support helps cover development costs and server expenses.
-
-[![Patreon](https://img.shields.io/badge/Patreon-Patron-F96854?style=for-the-badge&logo=patreon)](https://www.patreon.com/FirstEverTech)[![GitHub Sponsors](https://img.shields.io/badge/GitHub-Sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/FirstEverTech)[![PayPal](https://img.shields.io/badge/PayPal-Donate-00457C?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=48VGDSCNJAPTJ)[![Buy Me a Coffee](https://img.shields.io/badge/Coffee-Donate-FFDD00?style=for-the-badge&logo=buymeacoffee)](https://buymeacoffee.com/firstevertech)[![Ko-fi](https://img.shields.io/badge/Ko--fi-Donate-FF5E5B?style=for-the-badge&logo=kofi)](https://ko-fi.com/firstever)
-
-**Your support means everything!** If this project helped you, please consider:
-- If this project helped you, please give it a ⭐ "Star" on GitHub
-- Sharing with friends and colleagues
-- Reporting issues or suggesting features
-- Supporting development financially
-- 👉 [Share your feedback!](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/discussions)
-
----
-
 <a href="https://www.firstever.tech">
   <img width="600" alt="" title="FirstEver.tech"
        src="https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/blob/main/assets/FirstEverTech-animation.gif" />
-</a>
+</a>  
+
+<img width="600" alt="Author Photo" title="Marcin Grygiel aka FirstEver and AI" src="https://github.com/user-attachments/assets/452c8553-5059-47c6-9ff9-d73443bb6c06" />  
+
+### **Marcin Grygiel** aka FirstEver
+
+- 🌐 **Website**: [www.firstever.tech](https://www.firstever.tech)
+- 💼 **LinkedIn**: [Marcin Grygiel](https://www.linkedin.com/in/marcin-grygiel/)
+- 🔧 **GitHub**: [FirstEverTech](https://github.com/FirstEverTech)
+- 📧 **Contact**: [Contact Form](https://www.firstever.tech/contact)  
 
 ---
 
