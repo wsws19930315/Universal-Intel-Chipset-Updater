@@ -72,46 +72,50 @@ def generate(dates, repo, out):
     x_start = dates[0]
     x_end   = now
 
+    # --- PRZEDŁUŻENIE DANYCH O DZISIEJSZĄ DATĘ ---
+    if dates[-1] < now:
+        extended_dates = dates + [now]
+        extended_counts = counts + [counts[-1]]
+    else:
+        extended_dates = dates
+        extended_counts = counts
+
     fig, ax = plt.subplots(figsize=(10, 3.2), dpi=150)
     fig.patch.set_facecolor("none")
     ax.set_facecolor("none")
 
-    date_nums = mdates.date2num(dates)
+    # Linia + wypełnienie na rozszerzonych danych
+    ax.plot(extended_dates, extended_counts, color=LINE, linewidth=2.5, zorder=3)
+    ax.fill_between(extended_dates, extended_counts, color=LINE, alpha=0.15, zorder=2)
 
-    # Line + fill
-    ax.plot(dates, counts, color=LINE, linewidth=2.5, zorder=3)
-    ax.fill_between(dates, counts, color=LINE, alpha=0.15, zorder=2)
-
-    # 31 evenly spaced dots across the full span
+    # 31 równomiernie rozmieszczonych kropek – interpolacja na rozszerzonych danych
     x31 = np.linspace(mdates.date2num(x_start), mdates.date2num(x_end), 31)
-    y31 = np.interp(x31, date_nums, counts)
+    date_nums_ext = mdates.date2num(extended_dates)
+    y31 = np.interp(x31, date_nums_ext, extended_counts)
     ax.scatter(mdates.num2date(x31), y31, color=BLUE, s=30, zorder=4, linewidths=0)
 
     # ---------- MARGINS TO PREVENT DOTS FROM BEING CUT OFF ----------
-    # Horizontal margins: 2% on each side
     x_pad = (x_end - x_start) * 0.02
     ax.set_xlim(x_start - x_pad, x_end + x_pad)
 
     # Y axis: 8 lines, 0 at bottom, nice max at top, plus half a step above
     NUM_Y_LINES = 8
-    y_max = max(counts)
+    y_max = max(counts)  # używamy rzeczywistego maksimum, nie rozszerzonego (to samo)
     step = math.ceil(y_max / (NUM_Y_LINES - 1)) if y_max > 0 else 1
     nice_max = step * (NUM_Y_LINES - 1)
     if nice_max < NUM_Y_LINES - 1:
         nice_max = NUM_Y_LINES - 1
 
-    # Add half a step above the top line to create a small gap
     ax.set_ylim(0, nice_max + step * 0.5)
     ax.set_yticks(np.linspace(0, nice_max, NUM_Y_LINES))
 
-    # ---------- GRID (dotted, new color) ----------
+    # ---------- GRID ----------
     ax.set_axisbelow(True)
     loc, fmt, x_lbl = x_axis_config(x_start, x_end)
     ax.xaxis.set_major_locator(loc)
     ax.xaxis.set_major_formatter(fmt)
     ax.grid(True, which="major", color=GRID_MAJ, linewidth=0.7, linestyle=':')
 
-    # Tick styling
     ax.tick_params(axis="both", which="both", colors=BLUE, labelsize=7)
     fig.autofmt_xdate(rotation=0, ha="center")
     for lbl in ax.get_xticklabels() + ax.get_yticklabels():
