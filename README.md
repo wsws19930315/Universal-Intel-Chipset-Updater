@@ -74,7 +74,7 @@ Your name could be here too. Every bit helps cover development costs and ensures
 ## ⭐ Stars
 If this project helped you, please click the "Star" button at the top of this page on GitHub.  
 
-![Star History](assets/star-history.svg)
+![Star History](assets/stars-graph.svg)
 
 ## 🌐 Community & Distribution
 - Official threads on the following forums: **[TechPowerUp](https://www.techpowerup.com/forums/threads/tool-universal-intel-chipset-device-updater.346086/)**, **[Win-Raid](https://winraid.level1techs.com/t/tool-universal-intel-chipset-device-updater)**, **[Station-Drivers](https://www.station-drivers.com/index.php/en/forum/intel-chipsets-drivers/887-universal-intel-chipset-drivers-updater)**, **[ElevenForum](https://www.elevenforum.com/t/universal-intel-chipset-device-updater.41790)** and **[WinClub](https://winclub.pl/topic/49717-universal-intel-chipset-device-updater)**.
