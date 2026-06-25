@@ -1,4 +1,4 @@
-name: Generate Star History
+name: Generate Stars Graph
 
 on:
   schedule:
@@ -22,8 +22,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
-        run: python .github/scripts/generate_star_history.py
+        run: python .github/scripts/stars-graph.py
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update star history chart"
-          file_pattern: assets/star-history.svg
+          file_pattern: assets/stars-graph.svg
