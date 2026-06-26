@@ -1,4 +1,4 @@
-name: Generate Stars Graph
+name: Generate Stars History
 
 on:
   schedule:
