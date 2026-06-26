@@ -73,6 +73,7 @@ def generate(dates, repo, out):
     x_end   = now
 
     # --- PRZEDŁUŻENIE DANYCH O DZISIEJSZĄ DATĘ ---
+    # Jeśli ostatnia gwiazdka jest wcześniej niż dziś, dodajemy punkt (now, ostatnia wartość)
     if dates[-1] < now:
         extended_dates = dates + [now]
         extended_counts = counts + [counts[-1]]
@@ -84,11 +85,12 @@ def generate(dates, repo, out):
     fig.patch.set_facecolor("none")
     ax.set_facecolor("none")
 
-    # Linia + wypełnienie na rozszerzonych danych
+    # Linia + wypełnienie na rozszerzonych danych (dochodzą do dziś)
     ax.plot(extended_dates, extended_counts, color=LINE, linewidth=2.5, zorder=3)
     ax.fill_between(extended_dates, extended_counts, color=LINE, alpha=0.15, zorder=2)
 
     # 31 równomiernie rozmieszczonych kropek – interpolacja na rozszerzonych danych
+    # Dzięki temu ostatnia kropka wypadnie dokładnie na 'now'
     x31 = np.linspace(mdates.date2num(x_start), mdates.date2num(x_end), 31)
     date_nums_ext = mdates.date2num(extended_dates)
     y31 = np.interp(x31, date_nums_ext, extended_counts)
@@ -100,7 +102,7 @@ def generate(dates, repo, out):
 
     # Y axis: 8 lines, 0 at bottom, nice max at top, plus half a step above
     NUM_Y_LINES = 8
-    y_max = max(counts)  # używamy rzeczywistego maksimum, nie rozszerzonego (to samo)
+    y_max = max(counts)  # używamy rzeczywistego maksimum (nie rozszerzonego – to samo)
     step = math.ceil(y_max / (NUM_Y_LINES - 1)) if y_max > 0 else 1
     nice_max = step * (NUM_Y_LINES - 1)
     if nice_max < NUM_Y_LINES - 1:
