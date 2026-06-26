@@ -132,7 +132,7 @@ def generate(dates, repo, out):
     ax.set_xlabel(x_lbl,   color=BLUE, fontsize=8,
                   fontfamily="DejaVu Sans", fontweight="bold")
     ax.set_title(
-        f"{owner} / {name} · Star History",
+        f"{owner} / {name} · Stars History",
         color=BLUE, fontsize=10, fontweight="normal",
         fontfamily="DejaVu Sans", pad=10,
     )
@@ -146,4 +146,4 @@ if __name__ == "__main__":
     stars = fetch_stars(REPO)
     if not stars:
         sys.exit(0)
-    generate(stars, REPO, Path("assets/star-history.svg"))
+    generate(stars, REPO, Path("assets/stars-graph.svg"))
