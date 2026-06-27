@@ -34,7 +34,7 @@
 [Cyan] PROJECT IMPACT
 [Cyan] ==============
 
-[Green] - 65,000+ downloads worldwide
+[Green] - 66,000+ downloads worldwide
 [Green] - 100,000+ Intel hardware IDs supported
 [Green] - Open-source and free to use
 [Green] - Continuously maintained INF database
