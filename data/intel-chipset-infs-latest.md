@@ -5,7 +5,7 @@ The Intel Chipset Device Software installs the Windows INF files. An INF is a te
 This dataset organizes the historical naming of platforms, with a focus on technical rather than marketing aspects. It is based on:
 
 - Detects 6645 INF files
-- Pulls 3025 unique HWIDs
+- Pulls 3002 unique HWIDs
 - Creates 130153 entries
 
 ## Naming Legend - Microarchitecture / Segment
@@ -204,7 +204,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| KabyLake-HSDHost.inf, KabyLake-HSystem.inf, KabyLake-HSystemcAVS.inf, KabyLake-HSystemISH.inf | 10.1.1.37 | 10.1.1.36 | 01/10/2016* | A280, A281, A282, A283, A284, A285, A286, A287, A288, A289, A28A, A28B, A28C, A28D, A28E, A28F, A2AB, A2B0, A2B2, A2B4, A2B5, A2B6, A2B7, A2B8, A2B9, A2BF, A2E4, A2E5, A2F5, A2F7, A2F9 |
+| KabyLake-HSystem.inf, KabyLake-HSystemcAVS.inf, KabyLake-HSystemISH.inf | 10.1.1.37 | 10.1.1.36 | 01/10/2016* | A2B0, A2B5, A2E4, A2E5 |
 
 #### KabyLake
 **Generation:** 7th Gen Core - Kaby Lake - Desktop/Mobile
@@ -263,7 +263,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| IceLakeXSystem.inf | 10.1.19928.8615 | 10.1.26.11 | 24/07/2024* | 0B00, 3349, 3440, 3441, 3442, 3443, 3445, 3446, 3447, 3448, 344A, 344B, 344C, 344D, 3450, 3451, 3452, 3455, 3458, 3459, 345A, 345B, 345C, 345D, 345E, 345F |
+| IceLakeXSystem.inf | 10.1.20314.8688(S) | 10.1.26.11 | 14/08/2025* | 0B00, 3349, 3440, 3441, 3442, 3443, 3445, 3446, 3447, 3448, 344A, 344B, 344C, 344D, 3450, 3451, 3452, 3455, 3458, 3459, 345A, 345B, 345C, 345D, 345E, 345F |
 
 #### HaswellE/BroadwellE CPU Root
 **Generation:** X99 - Haswell-E / Broadwell-E (HEDT)
@@ -301,7 +301,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| Skylake-ESystem.inf | 10.1.19928.8615 | 10.1.8.8 | 24/07/2024* | 2014, 2015, 2016, 2018, 201A, 201C, 2020, 2021, 2024, 2025, 2026, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 203A, 203D, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 204A, 204B, 204C, 204D, 204E, 2054, 2055, 2056, 2057, 2058, 2059, 205A, 205B, 2066, 2068, 2069, 206A, 206B, 206C, 206D, 206E, 206F, 2078, 207A, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2088, 208D, 208E |
+| Skylake-ESystem.inf | 10.1.20314.8688(S) | 10.1.8.8 | 14/08/2025* | 2014, 2015, 2016, 2018, 201A, 201C, 2020, 2021, 2024, 2025, 2026, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 203A, 203D, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 204A, 204B, 204C, 204D, 204E, 2054, 2055, 2056, 2057, 2058, 2059, 205A, 205B, 2066, 2068, 2069, 206A, 206B, 206C, 206D, 206E, 206F, 2078, 207A, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2088, 208D, 208E |
 
 #### Broadwell-DE
 **Generation:** Xeon D-1500 - Broadwell-DE
@@ -337,6 +337,13 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | ColetoCreekSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 15/06/2021* | 23B1, 23E0 |
+
+#### Kaseyville
+**Generation:** Communications - Kaseyville
+
+| INF | Package | Version | Date | HWIDs |
+|--------|---------|---------|------|--------|
+| KaseyvilleSystem.inf | 10.1.20314.8688(S) | 10.1.53.11 | 14/08/2025* | 11FB |
 
 #### Server Common
 **Generation:** Intel Server Chipset Driver - Common Components
@@ -402,7 +409,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| DenvertonPorts.inf, DenvertonSystem.inf | 10.1.19928.8615 | 10.1.19.2 | 24/07/2024* | 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 198A, 198B, 198C, 198D, 198E, 198F, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 199A, 199B, 199C, 199D, 199E, 199F, 19A2, 19A4, 19A5, 19A6, 19A7, 19A8, 19A9, 19AA, 19AB, 19AC, 19D1, 19D2, 19D3, 19D4, 19D6, 19D8, 19DB, 19DC, 19DE, 19DF, 19E0, 19E1, 19E2 |
+| DenvertonPorts.inf, DenvertonSystem.inf | 10.1.20314.8688(S) | 10.1.19.2 | 14/08/2025* | 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 198A, 198B, 198C, 198D, 198E, 198F, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 199A, 199B, 199C, 199D, 199E, 199F, 19A2, 19A4, 19A5, 19A6, 19A7, 19A8, 19A9, 19AA, 19AB, 19AC, 19D1, 19D2, 19D3, 19D4, 19D6, 19D8, 19DB, 19DC, 19DE, 19DF, 19E0, 19E1, 19E2 |
 
 #### Avoton
 **Generation:** Atom Server - Avoton
@@ -423,7 +430,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| CedarForkPorts.inf, CedarForkSystem.inf | 10.1.19928.8615 | 10.1.21.10 | 24/07/2024* | 18A0, 18A2, 18A4, 18A5, 18A6, 18A7, 18A8, 18A9, 18AA, 18AB, 18AC, 18AD, 18AE, 18AF, 18D3, 18D4, 18D6, 18D8, 18D9, 18DC, 18DD, 18DE, 18DF, 18E0, 18E1, 18EC, 18EE |
+| CedarForkPorts.inf, CedarForkSystem.inf | 10.1.20314.8688(S) | 10.1.21.10 | 14/08/2025* | 18A0, 18A2, 18A4, 18A5, 18A6, 18A7, 18A8, 18A9, 18AA, 18AB, 18AC, 18AD, 18AE, 18AF, 18D3, 18D4, 18D6, 18D8, 18D9, 18DC, 18DD, 18DE, 18DF, 18E0, 18E1, 18EC, 18EE |
 
 
 ### PCH Family
@@ -447,7 +454,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| LewisburgSystem.inf, LewisburgUSB.inf | 10.1.19928.8615 | 10.1.9.6 | 24/07/2024* | 37C0, 37C8, A190, A191, A192, A193, A194, A195, A196, A197, A198, A199, A19A, A19B, A19C, A19D, A19E, A19F, A1A1, A1A3, A1A4, A1A6, A1B1, A1BA, A1BB, A1BC, A1BD, A1BE, A1C0, A1C1, A1C2, A1C3, A1C4, A1C5, A1C6, A1C7, A1E7, A1E8, A1E9, A1EA, A1EC, A1ED, A1F0, A1F1, A1F8, A1F9, A1FC, A210, A211, A212, A213, A214, A215, A216, A217, A218, A219, A21A, A21B, A21C, A21D, A21E, A21F, A221, A223, A224, A226, A22F, A231, A23A, A23B, A23C, A23D, A23E, A240, A241, A242, A243, A244, A245, A246, A247, A267, A268, A269, A26A, A26C, A26D, A278, A279, A27C |
+| LewisburgSystem.inf, LewisburgUSB.inf | 10.1.20314.8688(S) | 10.1.9.6 | 14/08/2025* | 37C0, 37C8, A190, A191, A192, A193, A194, A195, A196, A197, A198, A199, A19A, A19B, A19C, A19D, A19E, A19F, A1A1, A1A3, A1A4, A1A6, A1B1, A1BA, A1BB, A1BC, A1BD, A1BE, A1C0, A1C1, A1C2, A1C3, A1C4, A1C5, A1C6, A1C7, A1E7, A1E8, A1E9, A1EA, A1EC, A1ED, A1F0, A1F1, A1F8, A1F9, A1FC, A210, A211, A212, A213, A214, A215, A216, A217, A218, A219, A21A, A21B, A21C, A21D, A21E, A21F, A221, A223, A224, A226, A22F, A231, A23A, A23B, A23C, A23D, A23E, A240, A241, A242, A243, A244, A245, A246, A247, A267, A268, A269, A26A, A26C, A26D, A278, A279, A27C |
 
 #### AlderLakePCH-S
 **Generation:** 600 Series - Alder Lake PCH-S
@@ -573,14 +580,14 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| CannonLake-HSDHost.inf, CannonLake-HSystem.inf, CannonLake-HSystemLPSS.inf, CannonLake-HSystemNorthpeak.inf, CannonLake-HSystemThermal.inf | 10.1.20490.8818 | 10.1.16.8 | 06/02/2026* | A300, A301, A302, A303, A304, A305, A306, A307, A308, A309, A30A, A30B, A30C, A30D, A30E, A30F, A310, A311, A312, A313, A314, A315, A316, A317, A318, A319, A31A, A31B, A31C, A31D, A31E, A31F, A320, A321, A323, A324, A326, A328, A329, A32A, A32B, A32C, A32D, A32E, A32F, A330, A331, A332, A333, A334, A335, A336, A337, A338, A339, A33A, A33B, A33C, A33D, A33E, A33F, A340, A341, A342, A343, A347, A368, A369, A36A, A36B, A36E, A375, A377, A379, A37B |
+| CannonLake-HSDHost.inf, CannonLake-HSystem.inf, CannonLake-HSystemLPSS.inf, CannonLake-HSystemNorthpeak.inf, CannonLake-HSystemThermal.inf | 10.1.20490.8818 | 10.1.16.8 | 06/02/2026* | A300, A301, A302, A303, A304, A305, A306, A307, A308, A309, A30A, A30B, A30C, A30D, A30E, A30F, A310, A311, A312, A313, A314, A315, A316, A317, A318, A319, A31A, A31B, A31C, A31D, A31E, A31F, A320, A321, A323, A324, A326, A328, A329, A32A, A32B, A32C, A32D, A32E, A32F, A330, A331, A332, A333, A334, A335, A336, A337, A338, A339, A33A, A33B, A33C, A33D, A33E, A33F, A340, A341, A342, A343, A347, A368, A369, A36A, A36B, A375, A379, A37B |
 
 #### CannonLake-LP
 **Generation:** 10th Gen Core - Cannon Lake-LP - Mobile Low Power SoC
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| CannonLake-LPSDHost.inf, CannonLake-LPSystem.inf, CannonLake-LPSystemLPSS.inf, CannonLake-LPSystemNorthpeak.inf, CannonLake-LPSystemThermal.inf | 10.1.20490.8818 | 10.1.15.7 | 06/02/2026* | 9D80, 9D81, 9D82, 9D83, 9D84, 9D85, 9D86, 9D87, 9D88, 9D89, 9D8A, 9D8B, 9D8C, 9D8D, 9D8E, 9D8F, 9D90, 9D91, 9D92, 9D93, 9D94, 9D95, 9D96, 9D97, 9D98, 9D99, 9D9A, 9D9B, 9D9C, 9D9D, 9D9E, 9D9F, 9DA0, 9DA1, 9DA3, 9DA4, 9DA6, 9DA8, 9DA9, 9DAA, 9DAB, 9DB0, 9DB1, 9DB2, 9DB3, 9DB4, 9DB5, 9DB6, 9DB7, 9DB8, 9DB9, 9DBA, 9DBB, 9DBC, 9DBD, 9DBE, 9DBF, 9DC4, 9DC5, 9DC6, 9DC7, 9DE8, 9DE9, 9DEA, 9DEB, 9DEE, 9DF5, 9DF7, 9DF9, 9DFB, 9DFC |
+| CannonLake-LPSDHost.inf, CannonLake-LPSystem.inf, CannonLake-LPSystemLPSS.inf, CannonLake-LPSystemNorthpeak.inf, CannonLake-LPSystemThermal.inf | 10.1.20490.8818 | 10.1.15.7 | 06/02/2026* | 9D80, 9D81, 9D82, 9D83, 9D84, 9D85, 9D86, 9D87, 9D88, 9D89, 9D8A, 9D8B, 9D8C, 9D8D, 9D8E, 9D8F, 9D90, 9D91, 9D92, 9D93, 9D94, 9D95, 9D96, 9D97, 9D98, 9D99, 9D9A, 9D9B, 9D9C, 9D9D, 9D9E, 9D9F, 9DA0, 9DA1, 9DA3, 9DA4, 9DA6, 9DA8, 9DA9, 9DAA, 9DAB, 9DB0, 9DB1, 9DB2, 9DB3, 9DB4, 9DB5, 9DB6, 9DB7, 9DB8, 9DB9, 9DBA, 9DBB, 9DBC, 9DBD, 9DBE, 9DBF, 9DC4, 9DC5, 9DC6, 9DC7, 9DE8, 9DE9, 9DEA, 9DEB, 9DF5, 9DF9, 9DFB, 9DFC |
 
 #### KabyLakePCH-H
 **Generation:** 200 Series - Kaby Lake PCH-H (Mobile High Performance)
@@ -667,7 +674,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| Chipset_SMBus.inf, Chipset_System.inf, Chipset_Thermal.inf, Chipset_USB.inf | 10.0.27.0 | 10.0.27 | 22/04/2015* | 0C59, 0C5A, 0C5B, 0C5C, 0C5D, 0C5E, 1D68, 2330, 2332, 24D3, 25A4, 266A, 269B, 27DA, 283E, 284F, 2930, 2932, 3A30, 3A32, 3A60, 3A62, 3B30, 8C31, 8CB1 |
+| Chipset_SMBus.inf, Chipset_System.inf, Chipset_Thermal.inf, Chipset_USB.inf | 10.0.27.0 | 10.0.27 | 22/04/2015* | 0C59, 0C5A, 0C5B, 0C5C, 0C5D, 0C5E, 1D68, 2330, 2332, 24D3, 25A4, 266A, 269B, 27DA, 283E, 284F, 2930, 2932, 3A30, 3A32, 3A60, 3A62, 3B30, 8C31, 8CB1, 9DEE, 9DF7, A2AB, A2F7, A2F9, A36E, A377 |
 
 ---
 
