@@ -278,7 +278,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | PatsburgSystem.inf, PatsburgUSB.inf | 10.1.18981.6008 | 10.1.3.2 | 15/06/2021* | 1D3E, 1D3F, 1D40, 1D41 |
-| PatsburgSystem.inf | 10.1.17415.8036 (EOL - requires two installers) | 10.1.3.1 | 09/08/2017* | 1D42 |
+| PatsburgSystem.inf | 10.1.17415.8036 | 10.1.3.1 | 09/08/2017* | 1D42 |
 
 ### XEON / SERVER
 
