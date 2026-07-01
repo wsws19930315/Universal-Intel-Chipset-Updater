@@ -224,6 +224,7 @@ If this project helped you, please click the "Star" button at the top of this pa
 <a id="older-releases"></a>
 ### 2.3 Older Releases
 
+- v2026.03.0013  → [Release Notes](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0013)
 - v2026.03.0012  → [Release Notes](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0012)
 - v2026.03.0011  → [Release Notes](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0011)
 - v2026.03.0010  → [Release Notes](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0010)
