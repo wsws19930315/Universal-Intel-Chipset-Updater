@@ -657,7 +657,7 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
-| PatsburgSystem.inf, PatsburgUSB.inf | 10.1.18981.6008 | 10.1.3.2 | 15/06/2021* | 1D10, 1D11, 1D12, 1D13, 1D14, 1D15, 1D16, 1D17, 1D18, 1D19, 1D1A, 1D1B, 1D1C, 1D1D, 1D1E, 1D1F, 1D22, 1D24, 1D25, 1D26, 1D2D, 1D70, 1D71, 1D72, 1D73, 1D74, 1D76, 1D77 |
+| PatsburgSystem.inf, PatsburgUSB.inf | 10.1.18981.6008 | 10.1.3.2 | 15/06/2021* | 1D11, 1D12, 1D13, 1D14, 1D15, 1D16, 1D17, 1D18, 1D19, 1D1A, 1D1B, 1D1C, 1D1D, 1D1E, 1D1F, 1D22, 1D24, 1D25, 1D26, 1D2D, 1D70, 1D71, 1D72, 1D73, 1D74, 1D76, 1D77 |
 
 #### CougarPoint
 **Generation:** 6 Series - Cougar Point (Desktop/Mobile PCH)
@@ -773,6 +773,13 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | sunrisepoint-lpSystem.inf | 10.1.1.12 | 10.1.1.12 | 21/09/2015* | 9D40, 9D42, 9D44, 9D45, 9D47, 9D49, 9D4A, 9D4C, 9D4D, 9D4F, 9D52, 9D54, 9D55, 9D57, 9D59, 9D5A, 9D5B, 9D5C, 9D5D, 9D5E, 9D5F |
+
+#### Patsburg PCH TEST
+**Generation:** C600/X79 - Patsburg (Server/Workstation Chipset)
+
+| INF | Package | Version | Date | HWIDs |
+|--------|---------|---------|------|--------|
+| PatsburgSystem.inf | 10.1.20490.8818 | 10.1.3.3 | 06/02/2026* | 1D10 |
 
 #### Denverton EOL
 **Generation:** Atom Server - Denverton
