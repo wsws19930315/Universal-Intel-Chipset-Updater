@@ -263,6 +263,14 @@ SHA256 = DD8C645F1DDC79E3303989C1E2261518FA67E49F5BE5C4EA23E2035831B13B27
 Backup = https://www.firstever.tech/download/backup/intel_chipset_10.1.2.86.zip
 
 Name = Intel Chipset Device Software
+INFVer = 09/08/2017,10.1.17415.8036
+Variant = Consumer
+Link = https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/download/archive/intel_chipset_10.1.17415.8036.zip
+Prefix = \SetupChipset.exe
+SHA256 = A72443F5577B46DE6CE7456666E58D29C883525D8F7FC9E81EB816B0152AAA0E
+Backup = https://www.firstever.tech/download/backup/intel_chipset_10.1.17415.8036.zip
+
+Name = Intel Chipset Device Software
 INFVer = 21/05/2018,10.1.17711.8088
 Variant = Consumer
 Link = https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/download/archive/intel_chipset_10.1.17711.8088.zip
