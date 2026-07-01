@@ -6,6 +6,36 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ---
 
+## [v2026.07.0015] - 2026-07-01
+
+### 🆕 Highlights
+- **EOL Device Support** — Enhanced database parser now correctly detects End-of-Life (EOL) platforms from the new `#### Platform EOL` section headers. EOL packages are installed first (oldest versions), followed by the latest packages, preventing newer INF files from being overwritten by older ones. Legacy HWIDs that were removed from the latest packages are now properly handled.
+
+- **Multi-Signature Verification** — Updated digital signature validation to recognize all Intel certificate variants used over the years:
+  - `Intel Corporation` (latest)
+  - `Intel(R) Software and Firmware Products` (newer)
+  - `Intel Corporation - Software and Firmware Products` (oldest)
+  
+  This ensures backward compatibility with older installer packages while maintaining strict security standards.
+
+- **Configurable Credits Screen** — The credits screen is now fully dynamic and loaded from external `intel-chipset-infs-credits.txt` and `intel-chipset-infs-ads.txt` files. This allows easy customization of support links, career opportunities, and promotional content without modifying the core script. The screen supports interactive key shortcuts (1-5, A-E, L) that open configured URLs or exit the application.
+
+- **Improved Database Parsing** — Fixed EOL detection logic to work with the new database format where EOL indicators are in section headers (`#### RaptorLake EOL`) rather than in the Package column. Platform names are now normalized (e.g., `RaptorLake` instead of `RaptorLake EOL`) for cleaner display.
+
+### 🔧 Technical Improvements
+- **EOL Detection**: Dual-mode parsing supports both old format (`(EOL)` in Package column) and new format (`#### Platform EOL` headers)
+- **Signature Validation**: Enhanced with 3 Intel certificate patterns + expiration check + algorithm validation (SHA256/SHA1)
+- **Credits Screen**: External configuration via `intel-chipset-infs-credits.txt` and `intel-chipset-infs-ads.txt`
+- **Parser Robustness**: Fixed table separator detection (`---` now works alongside `:---`)
+- **Backward Compatibility**: All changes maintain compatibility with existing database formats
+
+### 📦 Database Updates
+- Added EOL sections for 16 platforms (RaptorLake, AlderLake, CoffeeLake, TigerLakePCH-H, etc.)
+- EOL packages contain legacy HWIDs that were removed from the latest Intel Chipset Device Software packages
+- Installation order: EOL (oldest) → Main (latest) ensures all detected HWIDs receive the correct driver
+
+---
+
 ## [v2026.05.0014] - 2026-05-15
 
 ### Highlights
@@ -57,7 +87,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - Console output refinements for better user experience in different launch modes
 - Internal cleanup of auto-mode exit routine
 
-
 ---
 
 ## [v2026.03.0012] - 2026-03-12
@@ -71,7 +100,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - Internal script cleanup
 - Minor workflow optimizations
 
-
 ---
 
 ## [v2026.03.0011] - 2026-03-11
@@ -84,7 +112,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - Code refactoring for maintainability
 - Minor performance improvements in detection routines
 
-
 ---
 
 ## [v2026.03.0010] - 2026-03-10
@@ -96,7 +123,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 ### Technical
 - Script logic refinements for chipset platform mapping
 - Minor logging improvements
-
 
 ---
 
@@ -119,7 +145,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - No changes to Intel INF packages
 - Update focuses on database generation and detection logic
 
-
 ---
 
 ## [v2026.02.0008] - 2026-02-10
@@ -130,7 +155,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ### Technical
 - Script cleanup and internal optimizations
-
 
 ---
 
@@ -143,7 +167,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 ### Technical
 - Internal script optimizations
 
-
 ---
 
 ## [v10.1-2026.02.1] - 2026-02-01
@@ -154,7 +177,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ### Technical
 - Detection logic refinements
-
 
 ---
 
@@ -178,7 +200,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - Fixed potential false positives for unsupported platforms
 - Improved handling of platforms without separate chipset packages
 
-
 ---
 
 ## [v10.1-2025.11.7] - 2025-11-25
@@ -186,7 +207,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 ### Improvements
 - Improved chipset detection workflow
 - Minor stability improvements
-
 
 ---
 
@@ -199,7 +219,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 ### Technical
 - Minor code refactoring
 
-
 ---
 
 ## [v10.1-2025.11.5] - 2025-11-21
@@ -211,7 +230,6 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 ### Technical
 - Script optimizations
 - Improved logging consistency
-
 
 ---
 
@@ -232,11 +250,11 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 - Automatic update detection
 - Detailed logging and debug mode
 
-
 ---
 
 # Release Links
 
+[v2026.07.0015]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.07.0015
 [v2026.05.0014]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.05.0014
 [v2026.03.0013]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0013  
 [v2026.03.0012]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0012  
