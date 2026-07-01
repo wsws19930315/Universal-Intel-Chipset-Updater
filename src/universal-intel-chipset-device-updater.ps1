@@ -1,5 +1,5 @@
 <#PSScriptInfo
-.VERSION 2026.05.0014
+.VERSION 2026.07.0015
 .GUID c5044de3-67b5-4e70-b6fc-75e7847c799e
 .NAME universal-intel-chipset-device-updater
 .AUTHOR Marcin Grygiel
@@ -202,7 +202,7 @@ if ($QuietMode) {
 # =============================================
 # SCRIPT VERSION
 # =============================================
-$ScriptVersion = "2026.05.0014"
+$ScriptVersion = "2026.07.0015"
 # =============================================
 
 # Detect if running from SFX package
@@ -301,6 +301,8 @@ if ($Developer) {
 }
 $downloadListUrl = $githubBaseUrl + "intel-chipset-infs-download.txt"
 $supportMessageUrl = $githubBaseUrl + "intel-chipset-infs-message.txt"
+$creditsMessageUrl = $githubBaseUrl + "intel-chipset-infs-credits.txt"
+$adsUrl            = $githubBaseUrl + "intel-chipset-infs-ads.txt"
 
 # Temporary directory for downloads
 $tempDir = Join-Path $env:SystemRoot "Temp\IntelChipset"
@@ -529,7 +531,7 @@ function Get-KeyAndUrlFromLine {
     $cleanLine = $Line -replace $colorPattern, ''
 
     # Look for pattern "press [X]" (case-insensitive) to get the key
-    if ($cleanLine -match 'press \[([A-Za-z])\]') {
+    if ($cleanLine -match 'press \[([A-Za-z0-9])\]') {
         $key = $matches[1]
 
         # Find a URL pattern in the line (domain with at least one dot, optionally with path)
@@ -1153,7 +1155,10 @@ function Verify-FileHash {
 # =============================================
 
 function Verify-FileSignature {
-    param([string]$FilePath)
+    param(
+        [string]$FilePath,
+        [string]$INFPath = $null
+    )
 
     try {
         Write-DebugMessage "Verifying digital signature for: $FilePath"
@@ -1169,19 +1174,78 @@ function Verify-FileSignature {
             return $false
         }
 
-        if ($signature.SignerCertificate.Subject -notmatch 'CN=Intel Corporation') {
-            Write-Log "File not signed by Intel Corporation. Signer: $($signature.SignerCertificate.Subject)" -Type "ERROR"
-            Write-Host " FAIL: Digital signature verification - Not signed by Intel Corporation." -ForegroundColor Red
+        # List of allowed Intel signers in priority order
+        # Intel has used different certificate subjects over the years
+        $allowedSigners = @(
+            @{ Pattern = 'CN=Intel Corporation'; Name = 'Intel Corporation (latest)' },
+            @{ Pattern = 'Intel\(R\) Software and Firmware Products'; Name = 'Intel(R) Software and Firmware Products (newer)' },
+            @{ Pattern = 'Intel Corporation - Software and Firmware Products'; Name = 'Intel Corporation - Software and Firmware Products (oldest)' }
+        )
+
+        $signerName = $signature.SignerCertificate.Subject
+        $isValidSigner = $false
+        $matchedSigner = $null
+
+        # Check if signature matches any Intel pattern
+        foreach ($signer in $allowedSigners) {
+            if ($signerName -match $signer.Pattern) {
+                $isValidSigner = $true
+                $matchedSigner = $signer.Name
+                Write-DebugMessage "Matched Intel signature: '$($signer.Name)'"
+                break
+            }
+        }
+
+        # SPECIAL EXCEPTION: Version 10.1.20524.8822 signed by FirstEver.tech
+        # Intel did not provide an official installer for this version
+        $isFirstEverSignature = $signerName -match 'FirstEver\.tech'
+        if ($isFirstEverSignature) {
+            # Check if this is actually version 10.1.20524.8822
+            $fileName = Split-Path $FilePath -Leaf
+            if ($fileName -match '20524|8822' -or $INFPath -match '20524|8822') {
+                Write-DebugMessage "Detected FirstEver.tech signature for version 10.1.20524.8822 - ACCEPTED as exception"
+                Write-Host " NOTE: Using FirstEver.tech signature (official Intel installer not available for this version)" -ForegroundColor Yellow
+                $isValidSigner = $true
+                $matchedSigner = "FirstEver.tech (exception for version 10.1.20524.8822)"
+            } else {
+                # If this is not the specific version, reject it
+                Write-Log "FirstEver.tech signature detected but not for version 10.1.20524.8822" -Type "ERROR"
+                Write-Host " FAIL: FirstEver.tech signature is only allowed for version 10.1.20524.8822" -ForegroundColor Red
+                return $false
+            }
+        }
+
+        if (-not $isValidSigner) {
+            Write-Log "File not signed by any recognized Intel signer or FirstEver.tech. Signer: $signerName" -Type "ERROR"
+            Write-Host " FAIL: Digital signature verification - Not signed by recognized authority." -ForegroundColor Red
+            Write-Host "   Signer: $signerName" -ForegroundColor Yellow
+            Write-Host "   Allowed signers:" -ForegroundColor Yellow
+            Write-Host "     1. Intel Corporation (latest)" -ForegroundColor Gray
+            Write-Host "     2. Intel(R) Software and Firmware Products (newer)" -ForegroundColor Gray
+            Write-Host "     3. Intel Corporation - Software and Firmware Products (oldest)" -ForegroundColor Gray
+            Write-Host "     4. FirstEver.tech (only for version 10.1.20524.8822)" -ForegroundColor Gray
             return $false
         }
 
-        if ($signature.SignerCertificate.SignatureAlgorithm.FriendlyName -notmatch 'sha256') {
-            Write-Log "Signature not using SHA256 algorithm. Algorithm: $($signature.SignerCertificate.SignatureAlgorithm.FriendlyName)" -Type "ERROR"
-            Write-Host " FAIL: Digital signature verification - Not using SHA256 algorithm" -ForegroundColor Red
-            return $false
+        # Check if certificate has expired (skip for FirstEver.tech)
+        if (-not $isFirstEverSignature) {
+            if ($signature.SignerCertificate.NotAfter -lt (Get-Date)) {
+                Write-Log "Intel certificate has expired. Expiration: $($signature.SignerCertificate.NotAfter)" -Type "ERROR"
+                Write-Host " FAIL: Digital signature verification - Certificate expired." -ForegroundColor Red
+                return $false
+            }
         }
 
-        Write-Host " PASS: Digitally signed by Intel Corporation." -ForegroundColor Green
+        # Check algorithm (accept SHA256, SHA1 for older installers)
+        $sigAlgo = $signature.SignerCertificate.SignatureAlgorithm.FriendlyName
+        if ($sigAlgo -notmatch 'sha256|sha1') {
+            Write-DebugMessage "Unusual signature algorithm: $sigAlgo" -Type "WARNING"
+            Write-Host " WARNING: Unusual signature algorithm: $sigAlgo" -ForegroundColor Yellow
+            # Don't block, just warn
+        }
+
+        $displayName = if ($matchedSigner) { $matchedSigner } else { $signerName }
+        Write-Host " PASS: Digitally signed by $displayName" -ForegroundColor Green
         Write-DebugMessage "Digital signature verification passed for $FilePath"
         return $true
     } catch {
@@ -1208,7 +1272,8 @@ function Verify-InstallerSignature {
             return $false
         }
 
-        return Verify-FileSignature -FilePath $setupPath
+        # Pass INFPath to Verify-FileSignature for version detection
+        return Verify-FileSignature -FilePath $setupPath -INFPath $INFPath
     } catch {
         Write-Log "Error in installer signature verification: $($_.Exception.Message)" -Type "ERROR"
         return $false
@@ -1547,7 +1612,6 @@ function Parse-ChipsetINFsFromMarkdown {
         $inWorkstationSection = $false
         $inXeonSection = $false
         $inAtomSection = $false
-
         for ($i = 0; $i -lt $lines.Count; $i++) {
             $line = $lines[$i].Trim()
 
@@ -1582,7 +1646,10 @@ function Parse-ChipsetINFsFromMarkdown {
             }
 
             if ($line -match '^####\s+(.+)') {
-                $currentPlatform = $matches[1]
+                $rawPlatform = $matches[1].Trim()
+                $isEOLHeader = $rawPlatform -match '\s+EOL$'
+                $currentPlatform = $rawPlatform -replace '\s+EOL$', ''
+                Write-DebugMessage "Platform header: raw='$rawPlatform', normalized='$currentPlatform', isEOL=$isEOLHeader"
 
                 if ($inMainstreamSection) {
                     $sectionName = "Mainstream Desktop/Mobile"
@@ -1614,17 +1681,21 @@ function Parse-ChipsetINFsFromMarkdown {
                     $dataLine = $lines[$i].Trim()
                     $i++
 
-                    if ($dataLine -match '^\|\s*:---') { continue }
+                    if ($dataLine -match '^\|\s*:?---') { continue }
 
                     $columns = $dataLine.Split('|', [System.StringSplitOptions]::RemoveEmptyEntries) | ForEach-Object { $_.Trim() }
                     if ($columns.Count -ge 5) {
-                        $inf = $columns[0]
+                        $inf     = $columns[0]
                         $package = $columns[1]
                         $version = $columns[2]
-                        $date = $columns[3] -replace '\\', ''
-                        $hwIds = $columns[4] -split ',' | ForEach-Object { $_.Trim() }
+                        $date    = $columns[3] -replace '\\', ''
+                        $hwIds   = $columns[4] -split ',' | ForEach-Object { $_.Trim() }
 
-                        Write-DebugMessage "Parsed row: INF=$inf, Package=$package, Version=$version, HWIDs=$($hwIds -join ', ')"
+                        # EOL can be in package (old database) or in header (new database)
+                        $isEOL = ($package -match '\(EOL') -or $isEOLHeader
+                        $cleanPackage = ($package -replace '\s*\(EOL[^)]*\)\s*', '').Trim()
+
+                        Write-DebugMessage "Parsed row: INF=$inf, Package=$cleanPackage, Version=$version, IsEOL=$isEOL, HWIDs=$($hwIds -join ', ')"
 
                         foreach ($hwId in $hwIds) {
                             if ($hwId -match '^[A-F0-9]{4}$') {
@@ -1633,13 +1704,14 @@ function Parse-ChipsetINFsFromMarkdown {
                                     Section           = $sectionName
                                     Generation        = $currentGeneration
                                     INF               = $inf
-                                    Package           = $package
+                                    Package           = $cleanPackage
                                     Version           = $version
                                     Date              = $date
                                     HasAsterisk       = $date -match '\*$'
-                                    IsWindowsInbox    = ($package -eq "None")
+                                    IsWindowsInbox    = ($cleanPackage -eq "None")
+                                    IsEOL             = $isEOL
                                 }
-                                Write-DebugMessage "Added HWID: $hwId for platform $currentPlatform (Package: $package, IsWindowsInbox: $($package -eq 'None'))"
+                                Write-DebugMessage "Added HWID: $hwId for platform $currentPlatform (Package: $cleanPackage, IsEOL: $isEOL, IsWindowsInbox: $($cleanPackage -eq 'None'))"
                             } else {
                                 Write-DebugMessage "Skipping invalid HWID: $hwId"
                             }
@@ -1734,7 +1806,8 @@ function Install-ChipsetINF {
                 }
             } else {
                 Write-Host " Verifying installer digital signature..." -ForegroundColor Yellow
-                if (-not (Verify-FileSignature -FilePath $setupPath)) {
+                # Pass INFPath to Verify-FileSignature for version detection
+                if (-not (Verify-FileSignature -FilePath $setupPath -INFPath $INFPath)) {
                     Write-Log "Installer digital signature verification failed. Aborting installation." -Type "ERROR"
                     Write-Host " ERROR: Installer digital signature verification failed. Installation aborted." -ForegroundColor Red
                     return $false
@@ -1800,7 +1873,7 @@ function Install-ChipsetINF {
                 $altIsMSI = $installers[0].Name -match '\.msi$'
                 if (-not $altIsMSI) {
                     Write-Host " Verifying alternative installer digital signature..." -ForegroundColor Yellow
-                    if (-not (Verify-FileSignature -FilePath $installers[0].FullName)) {
+                    if (-not (Verify-FileSignature -FilePath $installers[0].FullName -INFPath $INFPath)) {
                         Write-Log "Alternative installer digital signature verification failed." -Type "ERROR"
                         return $false
                     }
@@ -1870,13 +1943,31 @@ function Show-FinalCredits {
     # --- Dictionary to store key -> URL mappings ---
     $keyActions = @{}
 
-    # Try to download the support message, fallback to embedded text on error
+    # --- Load ad links from intel-chipset-infs-ads.txt (A-E keys) ---
+    # File format (one per line):  A = https://...
+    # Missing or empty value means that key behaves as Exit.
     $cacheBuster = "?t=$(Get-Date -Format 'yyyyMMddHHmmss')"
     try {
-        $content = Invoke-WebRequest -Uri ($supportMessageUrl + $cacheBuster) -UseBasicParsing -ErrorAction Stop
+        $adsContent = Invoke-WebRequest -Uri ($adsUrl + $cacheBuster) -UseBasicParsing -ErrorAction Stop
+        foreach ($adLine in ($adsContent.Content -split "`r?`n")) {
+            if ($adLine -match '^\s*([A-Ea-e])\s*=\s*(https?://\S+)\s*$') {
+                $adKey = $matches[1].ToUpper()
+                $keyActions[$adKey]              = $matches[2]
+                $keyActions[$adKey.ToLower()]    = $matches[2]
+            }
+        }
+    } catch {
+        # Ads file unavailable - A-E keys will simply exit (no action registered)
+    }
+
+    # --- Load credits message (intel-chipset-infs-credits.txt).
+    #     Old versions of this updater load intel-chipset-infs-message.txt instead;
+    #     that file is left unchanged for backward compatibility.
+    try {
+        $content = Invoke-WebRequest -Uri ($creditsMessageUrl + $cacheBuster) -UseBasicParsing -ErrorAction Stop
         $lines = $content.Content -split "`r?`n"
     } catch {
-        # Fallback embedded message
+        # Fallback embedded credits
         $lines = @(
             "[Magenta]",
             "[Magenta] SUPPORT THIS PROJECT",
@@ -1887,9 +1978,11 @@ function Show-FinalCredits {
             "",
             " Support options:",
             "",
-            "[Green] - PayPal Donation:[Yellow] tinyurl.com/fet-paypal[Gray] - press [Black,Gray][P][Gray,Black] key",
-            "[Green] - Buy Me a Coffee:[Yellow] tinyurl.com/fet-coffee[Gray] - press [Black,Gray][C][Gray,Black] key",
-            "[Green] - GitHub Sponsors:[Yellow] tinyurl.com/fet-github[Gray] - press [Black,Gray][G][Gray,Black] key",
+            "[Green] - Support Patreon:[Yellow] tinyurl.com/fet-patron[Gray] - press [Black,Gray][1][Gray,Black] key",
+            "[Green] - Support PayPal: [Yellow] tinyurl.com/fet-paypal[Gray] - press [Black,Gray][2][Gray,Black] key",
+            "[Green] - Support Coffee: [Yellow] tinyurl.com/fet-coffee[Gray] - press [Black,Gray][3][Gray,Black] key",
+            "[Green] - Support Ko-Fi:  [Yellow] tinyurl.com/fet-mykofi[Gray] - press [Black,Gray][4][Gray,Black] key",
+            "[Green] - Support GitHub: [Yellow] tinyurl.com/fet-github[Gray] - press [Black,Gray][5][Gray,Black] key",
             "",
             " If this project helped you, please consider:",
             "",
@@ -1907,19 +2000,19 @@ function Show-FinalCredits {
             " struggles with system compatibility, automation, or tooling gaps,",
             " let's discuss how I can help.",
             "",
+            " I specialize in Windows deployment, driver automation, hardware",
+            " compatibility, infrastructure analysis, and custom IT tooling.",
+            "",
             "[Green] - Connect with me:[Yellow] linkedin.com/in/marcin-grygiel[Gray] - press [Black,Gray][L][Gray,Black] key"
         )
     }
 
     # Display each line and collect key/URL information
     foreach ($line in $lines) {
-        # Display the line with color tags
         Write-ColorLine $line
 
-        # Check if the line contains a key and URL
         $keyInfo = Get-KeyAndUrlFromLine -Line $line
         if ($keyInfo) {
-            # For letters, store both lowercase and uppercase versions
             if ($keyInfo.Key -match '[a-zA-Z]') {
                 $keyActions[$keyInfo.Key.ToUpper()] = $keyInfo.Url
                 $keyActions[$keyInfo.Key.ToLower()] = $keyInfo.Url
@@ -1933,32 +2026,27 @@ function Show-FinalCredits {
     if ($AutoMode) {
         return
     } else {
-        # Informative prompt
-        # Write-Host "`n Press P=PayPal, C=Coffee, G=GitHub, L=LinkedIn, or any other key to exit." -NoNewline -ForegroundColor Gray
+        Write-Host "`n Press " -NoNewline -ForegroundColor Gray
+        Write-Host "1" -NoNewline -ForegroundColor Yellow
+        Write-Host "=Patreon, " -NoNewline -ForegroundColor Gray
+        Write-Host "2" -NoNewline -ForegroundColor Yellow
+        Write-Host "=PayPal, " -NoNewline -ForegroundColor Gray
+        Write-Host "3" -NoNewline -ForegroundColor Yellow
+        Write-Host "=Coffee, " -NoNewline -ForegroundColor Gray
+        Write-Host "4" -NoNewline -ForegroundColor Yellow
+        Write-Host "=Ko-Fi, " -NoNewline -ForegroundColor Gray
+        Write-Host "5" -NoNewline -ForegroundColor Yellow
+        Write-Host "=GitHub, other key = Exit." -ForegroundColor Gray
 
-Write-Host "`n Press " -NoNewline -ForegroundColor Gray
-Write-Host "P" -NoNewline -ForegroundColor Yellow
-Write-Host "=PayPal, " -NoNewline -ForegroundColor Gray
-Write-Host "C" -NoNewline -ForegroundColor Yellow
-Write-Host "=Coffee, " -NoNewline -ForegroundColor Gray
-Write-Host "G" -NoNewline -ForegroundColor Yellow
-Write-Host "=GitHub, " -NoNewline -ForegroundColor Gray
-Write-Host "L" -NoNewline -ForegroundColor Yellow
-Write-Host "=LinkedIn, or any other key to exit." -ForegroundColor Gray
-
-
-        # Wait for a single key press
         $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
         $pressed = $key.Character.ToString()
 
-        # Check if the pressed key exists in the dictionary
-        if ($keyActions.ContainsKey($pressed)) {
+        if ($keyActions.ContainsKey($pressed) -and $keyActions[$pressed]) {
             $url = $keyActions[$pressed]
             Start-Process $url
             if (-not $isSFX) { Clear-Host; Write-Host "`n Thank you for using Universal Intel Chipset Device Updater!`n" -ForegroundColor Cyan }
             exit
         } else {
-            # Any other key – exit
             if (-not $isSFX) { Clear-Host; Write-Host "`n Thank you for using Universal Intel Chipset Device Updater!`n" -ForegroundColor Cyan }
             exit
         }
@@ -2128,23 +2216,45 @@ try {
         # Removed extra Write-Host ""
     }
 
-    # Build unique platforms for detailed analysis
-    $uniquePlatforms = @{}
-    foreach ($match in $matchingChipsets) {
-        $platform = $match.ChipsetInfo.Platform
-        $package = $match.ChipsetInfo.Package
+    # Build unique platform+package entries.
+    # A platform can now have TWO packages: one EOL (older, for legacy HWIDs dropped
+    # from the latest package) and one main (latest). Both are tracked separately so
+    # both get installed - EOL first, then main (confirmed safe on X79 testing:
+    # no restart needed between installers, main does not overwrite EOL HWID entries
+    # because the latest INF simply has no entry for those legacy IDs).
+    $uniquePlatforms = @{}   # key = "Platform::Package" to allow multiple packages per platform
+    $platformHasEOL  = @{}   # key = Platform, value = $true if any EOL device detected
 
-        if (-not $uniquePlatforms.ContainsKey($platform)) {
-            $uniquePlatforms[$platform] = @{
+    foreach ($match in $matchingChipsets) {
+        $platform  = $match.ChipsetInfo.Platform
+        $package   = $match.ChipsetInfo.Package
+        $isEOL     = $match.ChipsetInfo.IsEOL
+        $entryKey  = "$platform::$package"
+
+        if (-not $uniquePlatforms.ContainsKey($entryKey)) {
+            $uniquePlatforms[$entryKey] = @{
                 ChipsetInfo     = $match.ChipsetInfo
                 Devices         = @($match.Device)
                 CurrentVersions = @()
+                IsEOL           = $isEOL
             }
+        } else {
+            $uniquePlatforms[$entryKey].Devices += $match.Device
         }
+
+        if ($isEOL) { $platformHasEOL[$platform] = $true }
+
         if ($match.CurrentVersion) {
-            $uniquePlatforms[$platform].CurrentVersions += $match.CurrentVersion
+            $uniquePlatforms[$entryKey].CurrentVersions += $match.CurrentVersion
         }
     }
+
+    # For platforms where EOL devices were detected, also ensure the main (latest)
+    # package entry exists so it gets installed after the EOL one.
+    # (It will already exist if any non-EOL HWID of that platform was also detected.)
+    # No extra action needed - if a platform has only EOL devices detected, only the
+    # EOL package will be installed; the main package is only installed when at least
+    # one of its own HWIDs was actually found in the system.
 
     Write-DebugMessage "uniquePlatforms count: $($uniquePlatforms.Count)"
     Start-Sleep -Seconds 2
@@ -2156,16 +2266,18 @@ try {
     $hasAnyAsterisk = $false
     $hasNewerWindowsInbox = $false
 
-    foreach ($platformName in $uniquePlatforms.Keys) {
-        Write-DebugMessage "Displaying platform: $platformName"
+    foreach ($entryKey in $uniquePlatforms.Keys) {
+        Write-DebugMessage "Displaying platform entry: $entryKey"
 
-        $platformData = $uniquePlatforms[$platformName]
-        $chipsetInfo = $platformData.ChipsetInfo
-        $devices = $platformData.Devices
+        $platformData    = $uniquePlatforms[$entryKey]
+        $chipsetInfo     = $platformData.ChipsetInfo
+        $devices         = $platformData.Devices
         $currentVersions = $platformData.CurrentVersions | Sort-Object -Unique
+        $platformName    = $chipsetInfo.Platform
+        $eolLabel        = if ($platformData.IsEOL) { " [EOL]" } else { "" }
 
         # Platform name (white)
-        Write-Host " Platform: $platformName" -ForegroundColor White
+        Write-Host " Platform: $platformName$eolLabel" -ForegroundColor White
 
         # Generation line (gray) - without "Generation:" label
         if ($chipsetInfo.Generation) {
@@ -2365,25 +2477,34 @@ try {
         Show-Screen4
 
         $packageGroups = @{}
-        foreach ($platformName in $uniquePlatforms.Keys) {
-            $platformData = $uniquePlatforms[$platformName]
-            $packageVersion = $platformData.ChipsetInfo.Package
+        foreach ($entryKey in $uniquePlatforms.Keys) {
+            $platformData    = $uniquePlatforms[$entryKey]
+            $packageVersion  = $platformData.ChipsetInfo.Package
+            $platformName    = $platformData.ChipsetInfo.Platform
 
             if (-not $packageGroups.ContainsKey($packageVersion)) {
-                $packageGroups[$packageVersion] = @()
+                $packageGroups[$packageVersion] = @{
+                    Platforms = @()
+                    IsEOL     = $platformData.IsEOL
+                }
             }
-            $packageGroups[$packageVersion] += $platformName
+            $packageGroups[$packageVersion].Platforms += $platformName
         }
 
-        $sortedPackages = $packageGroups.Keys | Sort-Object { [version]($_ -replace '\s*\(S\)\s*', '') } -Descending
+        # Sort ASCENDING - EOL (older) packages install first, main (latest) installs last.
+        # This matches confirmed X79 test behaviour: no restart needed between installers,
+        # and the later (newer) installer does not touch legacy HWIDs it no longer lists.
+        $sortedPackages = $packageGroups.Keys | Sort-Object { [version]($_ -replace '\s*\(S\)\s*', '') }
         Write-DebugMessage "Package groups: $($packageGroups.Count) unique packages"
 
         $successCount = 0
         $processedPackages = @{}
 
         foreach ($packageVersion in $sortedPackages) {
-            $platforms = $packageGroups[$packageVersion]
-            Write-Host " Package $packageVersion for platforms:" -ForegroundColor Cyan
+            $pkgData  = $packageGroups[$packageVersion]
+            $platforms = $pkgData.Platforms
+            $eolLabel  = if ($pkgData.IsEOL) { " [EOL - legacy devices]" } else { "" }
+            Write-Host " Package $packageVersion$eolLabel for platforms:" -ForegroundColor Cyan
             Write-Host " " -NoNewline
             Write-Host "$($platforms -join ', ')"
 
