@@ -255,6 +255,13 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 |--------|---------|---------|------|--------|
 | SandyBridgeSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 15/06/2021* | 0100, 0101, 0104, 0105, 0108, 0109, 010D |
 
+#### AlderLake_Extension-Dmasec
+**Generation:** 600 Series - Alder Lake - DMA Security Ext. (IOMMU / BitLocker)
+
+| INF | Package | Version | Date | HWIDs |
+|--------|---------|---------|------|--------|
+| AlderLakeDmaSecExtension.inf | 10.1.20532.8842 | 10.1.45.10 | 21/03/2026* | 460D, 461F, 462D, 462F, 463D, 463F, 464D, 466E |
+
 
 ### WORKSTATION / HEDT
 
@@ -476,13 +483,6 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 | INF | Package | Version | Date | HWIDs |
 |--------|---------|---------|------|--------|
 | AlderLakePCH-NSystem.inf, AlderLakePCH-NSystemNorthpeak.inf | 10.1.20532.8842 | 10.1.50.8 | 21/03/2026* | 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5489, 548A, 548B, 548C, 548D, 548E, 548F, 5490, 5491, 5492, 5493, 5494, 5495, 5496, 5497, 5498, 5499, 549A, 549B, 549C, 549D, 549E, 549F, 54A0, 54A1, 54A3, 54A4, 54A6, 54AF, 54B0, 54B1, 54B2, 54B3, 54B4, 54B5, 54B6, 54B7, 54B8, 54B9, 54BA, 54BB, 54BC, 54BD, 54BE, 54BF, 54EF |
-
-#### AlderLake_Extension-Dmasec
-**Generation:** 600 Series - Alder Lake - DMA Security Ext. (IOMMU / BitLocker)
-
-| INF | Package | Version | Date | HWIDs |
-|--------|---------|---------|------|--------|
-| AlderLakeDmaSecExtension.inf | 10.1.20532.8842 | 10.1.45.10 | 21/03/2026* | 460D, 461F, 462D, 462F, 463D, 463F, 464D, 466E |
 
 #### AlderLakePCH-N_Extension-Dmasec
 **Generation:** 600 Series - Alder Lake PCH-N - DMA Security Ext. (IOMMU / BitLocker)
@@ -793,8 +793,10 @@ This dataset organizes the historical naming of platforms, with a focus on techn
 
 **Note on missing platforms (*):** Platforms marked with * in the legend have no dedicated INF file in Intel Chipset Device Software. Intel does not ship a separate chipset INF for these platforms - their Hardware IDs are either covered by an adjacent generation's INF or handled exclusively by Windows inbox drivers and OEM-specific packages.
 
+**Note on EOL (End-of-Life) sections:** Some platforms have HWIDs that were removed from the latest INF package but are still supported by an older package version. These are grouped into separate <Platform> EOL sections. If your system has a HWID that appears only in an EOL section, the updater will install that older package alongside the latest one, ensuring all your hardware remains properly recognized. The EOL sections are rendered at the end of this document for clarity.
+
 **Date detection logic:**
 - Dates without asterisk are taken directly from the INF file's DriverVer field.
 - Dates marked with * indicate that the original INF file uses the symbolic date 07/18/1968 (Intel's founding date), which is intentionally used to lower the driver ranking in Windows. In such cases, the displayed date was approximated using the digital signature timestamp from the corresponding .cat file.
 
-**Source:** [Universal Intel Chipset Device Updater](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater) / **Project by:** [Marcin Grygiel](https://www.linkedin.com/in/marcin-grygiel/) / **Last Update:** 04-07-2026
+**Source:** [Universal Intel Chipset Device Updater](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater) / **Project by:** [Marcin Grygiel](https://www.linkedin.com/in/marcin-grygiel/) / **Last Update:** 05-07-2026
