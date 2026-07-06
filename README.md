@@ -516,19 +516,31 @@ universal-intel-chipset-device-updater
 ## 📥 **12. Download Options**
 <a id="option-1-sfx-executable-recommended"></a>
 ### 12.1 Option 1: SFX Executable (Recommended)
-- **File**: `ChipsetUpdater-202x.xx.xxxx-Win10-Win11.exe`
-- **Features**: Digital signature, one-click execution, automatic extraction
+- **File**: [`ChipsetUpdater-202x.xx.xxxx-Win10-Win11.exe`](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases)
+- **Features**: One-click execution, automatic extraction
+- **Security**: Self-verifying SHA-256 hash check on every run, Authenticode signature verification of downloaded Intel installer packages
 - **For**: Most users, easiest method
 <a id="option-2-script-bundle"></a>
 ### 12.2 Option 2: Script Bundle
-- **File**: `universal-intel-chipset-updater.ps1`
+- **File**: [`universal-intel-chipset-device-updater.ps1`](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/blob/main/src/universal-intel-chipset-device-updater.ps1)
+- **File**: [`universal-intel-chipset-device-updater.bat`](https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/blob/main/src/universal-intel-chipset-device-updater.bat)
 - **Features**: Full control, modifiable code, transparency
+- **Security**: Self-verifying SHA-256 hash check on every run, Authenticode signature verification of downloaded Intel installer packages
 - **For**: Advanced users, administrators, customization
-<a id="option-3-source-code"></a>
-### 12.3 Option 3: Source Code
+<a id="option-3-powershell-gallery"></a>
+### 12.3 Option 3: PowerShell Gallery
+- **Method**: `Install-Script universal-intel-chipset-device-updater`
+- **Features**: Versioned distribution via PSGallery, one-line install/update (`Update-Script`), no manual download or extraction, runs directly as an installed command
+- **Security**: Self-verifying SHA-256 hash check on every run, Authenticode signature verification of downloaded Intel installer packages
+- **For**: Advanced users, administrators
+<a id="option-4-source-code"></a>
+### 12.4 Option 4: Source Code
 - **Method**: `git clone` the repository
 - **Features**: Latest development version, full customization
 - **For**: Developers, contributors
+
+
+[↑ Back to top](#top)
 
 
 [↑ Back to top](#top)
@@ -559,8 +571,8 @@ universal-intel-chipset-device-updater
 - [BEHIND-THE-PROJECT_PL.md](docs/BEHIND-THE-PROJECT_PL_2025.md) - Project background (Polish)
 - [HOW-TO-VERIFY-INF_EN_2026.md](docs/HOW-TO-VERIFY-INF_EN_2026.md) - Manual INF version verification guide (English)
 - [HOW-TO-VERIFY-INF_PL_2026.md](docs/HOW-TO-VERIFY-INF_PL_2026.md) - Manual INF version verification guide (Polish)
-- [INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md) - INF Selection and SetupAPI Driver Ranking Model (English)
-- [INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md) - INF Selection and SetupAPI Driver Ranking Model (Polish)
+- [INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md) - INF Selection & SetupAPI Driver Ranking Model (English)
+- [INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md) - INF Selection & SetupAPI Driver Ranking Model (Polish)
 - [MDM-DEPLOYMENT-GUIDE_EN_2026.md](docs/MDM-DEPLOYMENT-GUIDE_EN_2026.md) - Deploying the Tool via MDM (English)
 - [MDM-DEPLOYMENT-GUIDE_PL_2026.md](docs/MDM-DEPLOYMENT-GUIDE_PL_2026.md) - Deploying the Tool via MDM (Polish)
 - [NEW-RELEASE-GUIDE_EN_2026.md](docs/NEW-RELEASE-GUIDE_EN_2026.md) - New Release Guide (English)
