@@ -26,5 +26,6 @@ if %errorLevel% neq 0 (
 cd /d "!SCRIPT_DIR!"
 
 powershell -ExecutionPolicy Bypass -File "universal-intel-chipset-device-updater.ps1"
-if %errorlevel% EQU 100 exit /b 0
-exit /b 0
+set "PS_EXIT=%errorlevel%"
+if %PS_EXIT% EQU 100 exit /b 0
+exit /b %PS_EXIT%
