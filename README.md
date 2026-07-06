@@ -135,13 +135,14 @@ If this project helped you, please click the "Star" button at the top of this pa
 12. [**Download Options**](#download-options)  
    12.1 [Option 1: SFX Executable (Recommended)](#option-1-sfx-executable-recommended)  
    12.2 [Option 2: Script Bundle](#option-2-script-bundle)  
-   12.3 [Option 3: Source Code](#option-3-source-code)  
-13. [**Project Structure**](#project-structure)  
-14. [**Release Structure**](#release-structure)  
+   12.3 [Option 3: PowerShell Gallery](#option-3-powershell-gallery)  
+   12.4 [Option 4: Source Code](#option-4-source-code)
+14. [**Project Structure**](#project-structure)  
+15. [**Release Structure**](#release-structure)  
    14.1 [Primary Files](#primary-files)  
    14.2 [Verification Files](#verification-files)  
    14.3 [Documentation](#documentation)  
-15. [**Frequently Asked Questions (FAQ)**](#frequently-asked-questions-faq)  
+16. [**Frequently Asked Questions (FAQ)**](#frequently-asked-questions-faq)  
    15.1 [Is this tool safe to use?](#is-this-tool-safe-to-use)  
    15.2 [Will this update all my Intel drivers?](#will-this-update-all-my-intel-drivers)  
    15.3 [What are the risks?](#what-are-the-risks)  
@@ -152,22 +153,22 @@ If this project helped you, please click the "Star" button at the top of this pa
    15.8 [How are updates notified?](#how-are-updates-notified)  
    15.9 [Why is the certificate "not trusted"?](#why-is-the-certificate-not-trusted)  
    15.10 [Why does VirusTotal show detections for the SFX executable?](#why-does-virustotal-show-detections)  
-16. [**Intel Platform Support**](#intel-platform-support)  
-17. [**Performance Metrics**](#performance-metrics)  
+17. [**Intel Platform Support**](#intel-platform-support)  
+18. [**Performance Metrics**](#performance-metrics)  
    17.1 [Typical Execution Time Breakdown](#typical-execution-times)  
    17.2 [Disk Space Usage](#disk-space-usage)  
    17.3 [Memory (RAM) Usage](#memory-ram-usage)  
    17.4 [Resource Usage Summary](#resource-usage-summary)  
-18. [**Known Issues**](#known-issues)  
-19. [**Ready to Update?**](#ready-to-update)  
+19. [**Known Issues**](#known-issues)  
+20. [**Ready to Update?**](#ready-to-update)  
    19.1 [Quick Start Guide](#quick-start-guide)  
    19.2 [Verification Steps (Optional)](#verification-steps-optional)  
    19.3 [Need Help?](#need-help)  
-20. [**Contributing**](#contributing)  
-21. [**License**](#license)  
-22. [**Acknowledgments**](#acknowledgments)  
-23. [**Important Links**](#important-links)  
-24. [**Author & Contact**](#author-and-contact)  
+21. [**Contributing**](#contributing)  
+22. [**License**](#license)  
+23. [**Acknowledgments**](#acknowledgments)  
+24. [**Important Links**](#important-links)  
+25. [**Author & Contact**](#author-and-contact)  
 
 [↑ Back to top](#top)
 
@@ -529,7 +530,7 @@ universal-intel-chipset-device-updater
 - **For**: Advanced users, administrators, customization
 <a id="option-3-powershell-gallery"></a>
 ### 12.3 Option 3: PowerShell Gallery
-- **Method**: `Install-Script universal-intel-chipset-device-updater`
+- **Method**: [`Install-Script universal-intel-chipset-device-updater`](https://www.powershellgallery.com/packages/universal-intel-chipset-device-updater) - PowerShell command
 - **Features**: Versioned distribution via PSGallery, one-line install/update (`Update-Script`), no manual download or extraction, runs directly as an installed command
 - **Security**: Self-verifying SHA-256 hash check on every run, Authenticode signature verification of downloaded Intel installer packages
 - **For**: Advanced users, administrators
@@ -538,10 +539,6 @@ universal-intel-chipset-device-updater
 - **Method**: `git clone` the repository
 - **Features**: Latest development version, full customization
 - **For**: Developers, contributors
-
-
-[↑ Back to top](#top)
-
 
 [↑ Back to top](#top)
 
