@@ -553,6 +553,7 @@ universal-intel-chipset-device-updater
 - [uninstall-intel-chipset.bat](src/uninstall-intel-chipset.bat) - Intel Chipset Device Software Uninstaller Batch launcher
 - [uninstall-intel-chipset.ps1](src/uninstall-intel-chipset.ps1) - Intel Chipset Device Software Uninstaller PowerShell script
 - [universal-intel-chipset-device-updater.ps1](src/universal-intel-chipset-device-updater.ps1) - Main PowerShell script
+- [universal-intel-chipset-device-updater.bat](src/universal-intel-chipset-device-updater.bat) - Main Batch file
 - [universal-intel-chipset-device-updater.ver](src/universal-intel-chipset-device-updater.ver) - Main Version file
 - [universal-intel-chipset-updater.ver](src/universal-intel-chipset-updater.ver) - Old Version file *(deprecated since v2026.03.0011 — kept for reference only)*
 
@@ -568,8 +569,8 @@ universal-intel-chipset-device-updater
 - [BEHIND-THE-PROJECT_PL.md](docs/BEHIND-THE-PROJECT_PL_2025.md) - Project background (Polish)
 - [HOW-TO-VERIFY-INF_EN_2026.md](docs/HOW-TO-VERIFY-INF_EN_2026.md) - Manual INF version verification guide (English)
 - [HOW-TO-VERIFY-INF_PL_2026.md](docs/HOW-TO-VERIFY-INF_PL_2026.md) - Manual INF version verification guide (Polish)
-- [INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md) - INF Selection & SetupAPI Driver Ranking Model (English)
-- [INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md) - INF Selection & SetupAPI Driver Ranking Model (Polish)
+- [INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_EN_2026.md) - INF Sel. and  SetupAPI Driver Ranking Model (English)
+- [INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md](docs/INF-SELECTION-SETUPAPI-RANKING-MODEL_PL_2026.md) - INF Sel. and  SetupAPI Driver Ranking Model (Polish)
 - [MDM-DEPLOYMENT-GUIDE_EN_2026.md](docs/MDM-DEPLOYMENT-GUIDE_EN_2026.md) - Deploying the Tool via MDM (English)
 - [MDM-DEPLOYMENT-GUIDE_PL_2026.md](docs/MDM-DEPLOYMENT-GUIDE_PL_2026.md) - Deploying the Tool via MDM (Polish)
 - [NEW-RELEASE-GUIDE_EN_2026.md](docs/NEW-RELEASE-GUIDE_EN_2026.md) - New Release Guide (English)
