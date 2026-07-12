@@ -1,5 +1,5 @@
 <#PSScriptInfo
-.VERSION 2026.07.0015
+.VERSION 2026.07.0016
 .GUID c5044de3-67b5-4e70-b6fc-75e7847c799e
 .NAME universal-intel-chipset-device-updater
 .AUTHOR Marcin Grygiel
@@ -202,7 +202,7 @@ if ($QuietMode) {
 # =============================================
 # SCRIPT VERSION
 # =============================================
-$ScriptVersion = "2026.07.0015"
+$ScriptVersion = "2026.07.0016"
 # =============================================
 
 # Detect if running from SFX package
@@ -1227,14 +1227,11 @@ function Verify-FileSignature {
             return $false
         }
 
-        # Check if certificate has expired (skip for FirstEver.tech)
-        if (-not $isFirstEverSignature) {
-            if ($signature.SignerCertificate.NotAfter -lt (Get-Date)) {
-                Write-Log "Intel certificate has expired. Expiration: $($signature.SignerCertificate.NotAfter)" -Type "ERROR"
-                Write-Host " FAIL: Digital signature verification - Certificate expired." -ForegroundColor Red
-                return $false
-            }
-        }
+        # NOTE: Certificate expiration is intentionally NOT checked against Get-Date here.
+        # Authenticode signatures remain cryptographically valid after cert expiration as
+        # long as a valid RFC3161 timestamp exists ($signature.Status -eq 'Valid' already
+        # accounts for this via Get-AuthenticodeSignature). A raw NotAfter < Get-Date check
+        # rejects legitimate, correctly-timestamped old Intel installers.
 
         # Check algorithm (accept SHA256, SHA1 for older installers)
         $sigAlgo = $signature.SignerCertificate.SignatureAlgorithm.FriendlyName
