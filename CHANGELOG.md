@@ -6,6 +6,22 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 ---
 
+## [v2026.07.0016] - 2026-07-12
+
+### 🩹 Hotfix
+- **Fixed: Legitimate expired-certificate installers rejected** — v2026.07.0015 introduced a certificate expiration check (`SignerCertificate.NotAfter -lt Get-Date`) in `Verify-FileSignature` that rejected older Intel installers whose signing certificate has since expired, even when the Authenticode signature itself remains valid via RFC3161 timestamping. `Get-AuthenticodeSignature`'s own `Status` field already correctly accounts for timestamped signatures, making the extra check both redundant and harmful — it broke installation of older, still-authentic chipset installers that worked fine in v2026.05.0014.
+
+### 🔧 Technical Improvements
+- Removed manual `SignerCertificate.NotAfter -lt Get-Date` expiration check from `Verify-FileSignature`
+- Signature authenticity now validated solely via signer identity match (3 recognized Intel certificate patterns + FirstEver.tech exception), timestamp-aware `Get-AuthenticodeSignature` status, and algorithm check (SHA256 preferred, SHA1 accepted — warning only)
+- No other changes — EOL device handling, multi-signer support, credits/ads screen, and parser improvements from v2026.07.0015 are unchanged
+
+### Notes
+- Recommended for everyone on v2026.07.0015 who saw `FAIL: Digital signature verification - Certificate expired.` for installers that previously worked in v2026.05.0014
+- No database changes in this release
+
+---
+
 ## [v2026.07.0015] - 2026-07-01
 
 ### 🆕 Highlights
@@ -254,6 +270,7 @@ The format is loosely based on [Keep a Changelog](https://keepachangelog.com/en/
 
 # Release Links
 
+[v2026.07.0016]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.07.0016
 [v2026.07.0015]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.07.0015
 [v2026.05.0014]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.05.0014
 [v2026.03.0013]: https://github.com/FirstEverTech/Universal-Intel-Chipset-Updater/releases/tag/v2026.03.0013  
